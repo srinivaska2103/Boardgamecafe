@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
+    <link rel="icon" href="assets/game-center.png">
+    <title>The Board Game Café | Play & Relax</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Tailwind Configuration for Dark Mode
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f97316', // Orange
+                        secondary: '#7c3aed', // Violet
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .active-nav { @apply text-primary font-bold border-b-2 border-primary; }
+    </style>
+    <style>
+        /* Define the active state for the nav links */
+        .desktop-link.active {
+            @apply text-primary font-bold border-b-2 border-primary;
+        }
+        
+        /* Ensure smooth transitions for hover and active states */
+        .desktop-link {
+            @apply transition-all duration-300;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+   <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20 items-center">
+        <a href="index.html">
+ <div class="flex items-center gap-2 shrink-0 cursor-pointer group">
+            <i data-lucide="dices" class="text-primary w-8 h-8 group-hover:rotate-12 transition-transform"></i>
+            <span class="text-xl md:text-2xl font-black tracking-tighter uppercase">Dice & Beans</span>
+        </div>
+        </a>
+       
+
+        <div class="hidden xl:flex items-center space-x-4">
+            <a href="index.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Home1</a>
+            <a href="home2.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Home2</a>
+            <a href="service.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Services</a>
+            <a href="gallery.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Gallery</a>
+            <a href="about.html" class="desktop-link active px-2 py-1 text-primary font-bold border-b-2 border-primary transition-all">About</a>
+            <a href="contact.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-2 md:gap-4">
+            
+            <div class="hidden md:flex items-center gap-2">
+                <a href="login.html">
+                                    <button class="text-primary border border-primary px-4 py-2 rounded-full font-bold hover:bg-primary hover:text-white transition">Register</button>
+
+                </a>
+                <a href="book.html">
+                <button class="bg-primary text-white px-4 py-2 rounded-full font-bold hover:bg-orange-600 transition shadow-lg shadow-orange-500/20">Book Now</button>
+
+                </a>
+            </div>
+
+            <div class="flex items-center gap-1 md:gap-2 border-l pl-2 md:pl-4 dark:border-slate-700">
+                <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-primary transition">
+                    <i data-lucide="moon" id="theme-icon" class="w-4 h-4 md:w-5 md:h-5"></i>
+                </button>
+                <button id="dir-toggle" class="hidden sm:block p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold hover:ring-2 ring-primary transition">LTR</button>
+            </div>
+
+            <div class="relative hidden lg:block group">
+                <button class="flex items-center gap-2 p-1 pr-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-8 h-8 rounded-full" alt="User">
+                    <span class="font-bold text-sm">User</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </button>
+                
+                <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border dark:border-slate-700 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                    <a href="user.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">My Dashboard</a>
+                    <!-- <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Settings</a> -->
+                    <!-- <hr class="my-1 border-slate-100 dark:border-slate-700"> -->
+                    <!-- <a href="#" class="block px-4 py-2 text-red-500 hover:bg-red-50 transition">Logout</a> -->
+                </div>
+            </div>
+
+            <button id="mobile-menu-btn" class="xl:hidden p-2 text-slate-600 dark:text-slate-300">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+    </div>
+</div>
+    
+    <!-- <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 flex flex-col gap-4">
+        <div class="space-y-2">
+            <a href="#" class="mobile-link block text-lg font-bold text-primary">Home1</a>
+            <a href="#" class="mobile-link block text-lg">Home2</a>
+            <a href="#" class="mobile-link block text-lg">Services</a>
+            <a href="#" class="mobile-link block text-lg">Gallery</a>
+            <a href="#" class="mobile-link block text-lg">About</a>
+            <a href="#" class="mobile-link block text-lg">Contact</a>
+        </div>
+
+        <hr class="dark:border-slate-800">
+
+        <div class="flex items-center gap-3 py-2">
+            <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
+            <div>
+                <p class="font-bold">User Name</p>
+                <a href="#" class="text-sm text-primary">View Dashboard</a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button class="border border-primary text-primary font-bold py-3 rounded-xl">Register</button>
+            <button class="bg-primary text-white font-bold py-3 rounded-xl">Book Now</button>
+        </div>
+    </div> -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 flex flex-col gap-4">
+    <div class="space-y-2">
+        <a href="index.html" class="mobile-link block text-lg">Home1</a>
+        <a href="home2.html" class="mobile-link block text-lg">Home2</a>
+        <a href="service.html" class="mobile-link block text-lg">Services</a>
+        <a href="gallery.html" class="mobile-link block text-lg">Gallery</a>
+        <a href="about.html" class="mobile-link block text-lg font-bold text-primary">About</a>
+        <a href="contact.html" class="mobile-link block text-lg">Contact</a>
+    </div>
+
+    <hr class="dark:border-slate-800">
+
+    <div class="flex items-center justify-between py-2">
+        <div class="flex items-center gap-3">
+            <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
+            <div>
+                <p class="font-bold">User Name</p>
+                <a href="user.html" class="text-sm text-primary">View Dashboard</a>
+            </div>
+        </div>
+        
+        <button id="mobile-dir-toggle" class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold border dark:border-slate-700 hover:ring-2 ring-primary transition">
+            LTR
+        </button>
+    </div>
+
+   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-md mx-auto px-4">
+    <a href="login.html" class="w-full block group">
+        <button class="w-full border-2 border-primary text-primary font-black py-4 rounded-2xl 
+                       hover:bg-primary/5 active:scale-95 transition-all duration-200 
+                       text-sm md:text-base uppercase tracking-widest shadow-sm">
+            Register
+        </button>
+    </a>
+
+    <a href="book.html" class="w-full block group">
+        <button class="w-full bg-primary text-white font-black py-4 rounded-2xl 
+                       shadow-lg shadow-orange-500/30 hover:bg-orange-600 
+                       hover:shadow-orange-500/40 active:scale-95 transition-all duration-200 
+                       text-sm md:text-base uppercase tracking-widest flex items-center justify-center gap-2">
+            Book Now
+            <i data-lucide="calendar-check" class="w-4 h-4 md:w-5 h-5"></i>
+        </button>
+    </a>
+</div>
+</div>
+</nav>
+<section id="our-story" class="relative pt-32 pb-20 px-6 overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10 animate-pulse"></div>
+    
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        
+        <div class="relative group" data-aos="fade-right" data-aos-duration="1000">
+            <div class="absolute -inset-6 bg-gradient-to-tr from-primary/30 to-secondary/20 rounded-[3.5rem] blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+            
+            <div class="relative overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-white dark:border-slate-800 transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:-rotate-1">
+                <img src="assets/gamezone" 
+                     class="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" 
+                     alt="Cafe Founders">
+                
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500"></div>
+                <div class="absolute bottom-6 left-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-xl transform translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    <p class="text-primary font-black text-xs uppercase tracking-widest">Est. 2024</p>
+                    <p class="text-slate-900 dark:text-white font-bold text-sm">Where the journey began</p>
+                </div>
+            </div>
+
+            <div class="hidden xl:block absolute -top-8 -right-8 w-24 h-24 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl p-4 animate-bounce duration-[3000ms]">
+                <i data-lucide="heart" class="w-full h-full text-primary fill-primary/10"></i>
+            </div>
+        </div>
+
+        <div class="space-y-6" data-aos="fade-left" data-aos-duration="1000">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100 dark:bg-orange-900/30 text-primary text-xs font-black tracking-widest uppercase">
+                <span class="flex h-2 w-2 rounded-full bg-primary animate-ping"></span>
+                ⭐ 01. Our Story
+            </div>
+            
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                From a Living Room to <br>
+                <span class="text-primary relative inline-block">
+                    Dice & Beans
+                    <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 318 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 9C106 3.5 212 3.5 315 9" stroke="#f97316" stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </h2>
+
+            <div class="space-y-4">
+                <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed first-letter:text-5xl first-letter:font-black first-letter:text-primary first-letter:mr-3 first-letter:float-left">
+                    It started with a simple passion for Catan and a crowded apartment table. We realized that in a digital world, people were craving real, face-to-face connection.
+                </p>
+                
+                <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed border-l-4 border-primary/20 pl-6 italic">
+                    "What began as a dream to build a 'home away from home' became a reality in 2024. Today, we are proud to be the heart of the local gaming community."
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 pt-6">
+                <div class="group cursor-default">
+                    <p class="text-3xl font-black text-primary group-hover:scale-110 transition-transform origin-left">500+</p>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Games in Library</p>
+                </div>
+                <div class="group cursor-default">
+                    <p class="text-3xl font-black text-primary group-hover:scale-110 transition-transform origin-left">10k+</p>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Happy Gamers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-24 bg-slate-100 dark:bg-slate-900/50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-black uppercase tracking-tight dark:text-white">The <span class="text-primary">Core</span> of Dice & Beans</h2>
+            <div class="w-20 h-1.5 bg-primary mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            
+            <div class="group relative p-10 rounded-[2.5rem] bg-white dark:bg-slate-800 shadow-xl hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 overflow-hidden" 
+                 data-aos="fade-up" data-aos-delay="100">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-orange-500/5 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 text-primary">
+                        <i data-lucide="target" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter dark:text-white group-hover:text-primary transition-colors">🎯 Our Mission</h3>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                        To create a vibrant, screen-free sanctuary where strategy meets laughter and every guest finds their seat at the table.
+                    </p>
+                </div>
+            </div>
+
+            <div class="group relative p-10 rounded-[2.5rem] bg-white dark:bg-slate-800 shadow-xl hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 overflow-hidden"
+                 data-aos="fade-up" data-aos-delay="200">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-purple-500/5 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mb-8 group-hover:-rotate-12 group-hover:scale-110 transition-all duration-500 text-purple-600">
+                        <i data-lucide="eye" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter dark:text-white group-hover:text-purple-600 transition-colors">🌍 Our Vision</h3>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                        To become the city's premier hub for analog gaming culture, expanding into inclusive spaces for all types of creators.
+                    </p>
+                </div>
+            </div>
+
+            <div class="group relative p-10 rounded-[2.5rem] bg-primary text-white shadow-2xl shadow-orange-500/20 hover:shadow-orange-500/40 hover:-translate-y-4 transition-all duration-500 overflow-hidden"
+                 data-aos="fade-up" data-aos-delay="300">
+                
+                <div class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:left-full transition-all duration-1000"></div>
+
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                        <i data-lucide="award" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">🏆 Our Values</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 group/item">
+                            <span class="w-6 h-6 flex items-center justify-center bg-white/20 rounded-full group-hover/item:bg-white group-hover/item:text-primary transition-all">✔</span>
+                            <span class="font-bold">Inclusivity</span>
+                        </li>
+                        <li class="flex items-center gap-3 group/item">
+                            <span class="w-6 h-6 flex items-center justify-center bg-white/20 rounded-full group-hover/item:bg-white group-hover/item:text-primary transition-all">✔</span>
+                            <span class="font-bold">Creativity</span>
+                        </li>
+                        <li class="flex items-center gap-3 group/item">
+                            <span class="w-6 h-6 flex items-center justify-center bg-white/20 rounded-full group-hover/item:bg-white group-hover/item:text-primary transition-all">✔</span>
+                            <span class="font-bold">Quality Beans</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="py-24 px-6 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight dark:text-white">
+                🎲 Why Board Games <span class="text-primary">Matter</span>
+            </h2>
+            <div class="h-1.5 w-24 bg-primary mx-auto mt-4 rounded-full relative overflow-hidden">
+                <div class="absolute inset-0 bg-white/30 animate-shimmer"></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+            
+            <div class="text-center group p-6 rounded-[2rem] hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative mx-auto w-24 h-24 mb-8">
+                    <div class="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-0 group-hover:scale-110 transition-transform duration-500"></div>
+                    <div class="relative w-full h-full bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:-rotate-12 transition-all duration-500 shadow-lg">
+                        <i data-lucide="heart" class="w-10 h-10 transition-transform group-hover:scale-110"></i>
+                    </div>
+                </div>
+                <h4 class="text-xl font-black mb-3 dark:text-white group-hover:text-primary transition-colors">Social Bonding</h4>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed transition-opacity">
+                    Strengthening friendships through shared goals, laughter, and healthy competition.
+                </p>
+            </div>
+
+            <div class="text-center group p-6 rounded-[2rem] hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
+                <div class="relative mx-auto w-24 h-24 mb-8">
+                    <div class="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-0 group-hover:scale-110 transition-transform duration-500"></div>
+                    <div class="relative w-full h-full bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-lg">
+                        <i data-lucide="brain" class="w-10 h-10 transition-transform group-hover:scale-110"></i>
+                    </div>
+                </div>
+                <h4 class="text-xl font-black mb-3 dark:text-white group-hover:text-primary transition-colors">Brain Power</h4>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Developing strategy, critical thinking, and advanced problem-solving creativity.
+                </p>
+            </div>
+
+            <div class="text-center group p-6 rounded-[2rem] hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-500" data-aos="fade-up" data-aos-delay="300">
+                <div class="relative mx-auto w-24 h-24 mb-8">
+                    <div class="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-0 group-hover:scale-110 transition-transform duration-500"></div>
+                    <div class="relative w-full h-full bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:-rotate-12 transition-all duration-500 shadow-lg">
+                        <i data-lucide="smile" class="w-10 h-10 transition-transform group-hover:scale-110"></i>
+                    </div>
+                </div>
+                <h4 class="text-xl font-black mb-3 dark:text-white group-hover:text-primary transition-colors">Stress Relief</h4>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Unplugging from screens for ultimate relaxation, focus, and organic human joy.
+                </p>
+            </div>
+
+            <div class="text-center group p-6 rounded-[2rem] hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-500" data-aos="fade-up" data-aos-delay="400">
+                <div class="relative mx-auto w-24 h-24 mb-8">
+                    <div class="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-0 group-hover:scale-110 transition-transform duration-500"></div>
+                    <div class="relative w-full h-full bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-lg">
+                        <i data-lucide="hourglass" class="w-10 h-10 transition-transform group-hover:scale-110"></i>
+                    </div>
+                </div>
+                <h4 class="text-xl font-black mb-3 dark:text-white group-hover:text-primary transition-colors">Patience</h4>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Learning the subtle art of waiting, observing, and reacting with intentionality.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+    .animate-shimmer {
+        animation: shimmer 2s infinite;
+    }
+</style>
+<section class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight dark:text-white">
+                👨‍👩‍👧 Meet the <span class="text-primary italic">Meeple Masters</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 mt-4 max-w-lg mx-auto">
+                The friendly faces behind the counter, ready to teach you your next favorite game.
+            </p>
+        </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 max-w-5xl mx-auto justify-items-center">
+            
+    <div class="relative group rounded-[3rem] overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-xl w-full" data-aos="zoom-in" data-aos-delay="200">
+        <div class="h-[450px] overflow-hidden">
+            <img src="assets/ab1" 
+                 class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-2" 
+                 alt="Sarah Chen">
+        </div>
+        
+        <div class="absolute top-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-3 rounded-2xl shadow-lg transform translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
+            <i data-lucide="book-open" class="text-primary w-6 h-6"></i>
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8 text-white transition-all duration-500 group-hover:pb-12">
+            <h4 class="text-3xl font-black tracking-tighter">Sarah Chen</h4>
+            <p class="text-primary font-black uppercase text-xs tracking-widest mb-4">Master Rule-Reader</p>
+            
+            <div class="max-h-0 opacity-0 group-hover:max-h-24 group-hover:opacity-100 transition-all duration-700 overflow-hidden">
+                <p class="text-sm text-slate-300 mb-4 italic">"I’ve read 500+ rulebooks so you don’t have to. Let’s play in 5 minutes!"</p>
+                <div class="flex gap-4">
+                    <span class="bg-white/10 px-3 py-1 rounded-full text-[10px] font-bold">Top Game: Wingspan</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative group rounded-[3rem] overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-xl w-full" data-aos="zoom-in" data-aos-delay="300">
+        <div class="h-[450px] overflow-hidden">
+            <img src="assets/ab2" 
+                 class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-2" 
+                 alt="Marcus Thorne">
+        </div>
+        
+        <div class="absolute top-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-3 rounded-2xl shadow-lg transform translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
+            <i data-lucide="coffee" class="text-primary w-6 h-6"></i>
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8 text-white transition-all duration-500 group-hover:pb-12">
+            <h4 class="text-3xl font-black tracking-tighter">Marcus Thorne</h4>
+            <p class="text-primary font-black uppercase text-xs tracking-widest mb-4">Lead Brewmaster</p>
+            
+            <div class="max-h-0 opacity-0 group-hover:max-h-24 group-hover:opacity-100 transition-all duration-700 overflow-hidden">
+                <p class="text-sm text-slate-300 mb-4 italic">"Fueling your long campaigns with the perfect roast since day one."</p>
+                <div class="flex gap-4">
+                    <span class="bg-white/10 px-3 py-1 rounded-full text-[10px] font-bold">Top Game: Root</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+</section>
+<section id="gallery" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8" data-aos="fade-up">
+            <div class="max-w-xl text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-black uppercase tracking-widest mb-4">
+                    <i data-lucide="camera" class="w-4 h-4"></i>
+                    Captured Joy
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter dark:text-white leading-tight">
+                    📸 Memories & <span class="text-primary italic">Moments</span>
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-4 text-lg">
+                    Every snapshot tells a story of victory, teamwork, and the infectious laughter that fills our café daily.
+                </p>
+            </div>
+            <button class="group bg-primary text-white px-8 py-4 rounded-2xl font-bold hover:shadow-2xl hover:shadow-orange-500/40 transition-all flex items-center gap-2 active:scale-95 shrink-0">
+                View Full Gallery 
+                <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-start">
+            
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/ab3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Victory Moment">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 bg-primary text-white rounded-xl shadow-lg shadow-orange-500/20">
+                            <i data-lucide="trophy" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-primary">Achievement</p>
+                            <p class="font-bold text-slate-900 dark:text-white leading-none">Victory Moments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="200">
+                <img src="assets/socialevents" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Teamwork">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 bg-secondary text-white rounded-xl shadow-lg shadow-purple-500/20">
+                            <i data-lucide="users" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-secondary">Community</p>
+                            <p class="font-bold text-slate-900 dark:text-white leading-none">Co-Op Strategy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="300">
+                <img src="assets/board" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Coffee & Games">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 bg-primary text-white rounded-xl shadow-lg shadow-orange-500/20">
+                            <i data-lucide="coffee" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-primary">Lifestyle</p>
+                            <p class="font-bold text-slate-900 dark:text-white leading-none">Perfect Brews</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="400">
+                <img src="assets/weekend" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Weekend Vibes">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 bg-secondary text-white rounded-xl shadow-lg shadow-purple-500/20">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-secondary">Atmosphere</p>
+                            <p class="font-bold text-slate-900 dark:text-white leading-none">Late Night Vibes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="game-collection" class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
+            <div class="max-w-2xl" data-aos="fade-right">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-black uppercase tracking-widest mb-4">
+                    <i data-lucide="library" class="w-4 h-4"></i>
+                    500+ Titles Available
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter dark:text-white">
+                    🧩 Our Game <span class="text-primary italic">Collection</span>
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-4 text-lg">
+                    From 15-minute icebreakers to 6-hour epic campaigns, our library is curated for every type of player.
+                </p>
+            </div>
+            
+            <div class="flex gap-3 overflow-x-auto pb-2 w-full lg:w-auto no-scrollbar" data-aos="fade-left">
+                <button class="px-6 py-2.5 rounded-full bg-primary text-white font-bold text-sm whitespace-nowrap shadow-lg shadow-orange-500/20">All Games</button>
+                <button class="px-6 py-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold text-sm whitespace-nowrap hover:bg-primary hover:text-white transition-all">Strategy</button>
+                <button class="px-6 py-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold text-sm whitespace-nowrap hover:bg-primary hover:text-white transition-all">Party</button>
+                <button class="px-6 py-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold text-sm whitespace-nowrap hover:bg-primary hover:text-white transition-all">Family</button>
+            </div>
+        </div>
+
+       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto justify-center">
+            
+    <div class="group bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] p-4 border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all duration-500 shadow-xl hover:shadow-2xl" data-aos="fade-up">
+        <div class="relative h-64 rounded-[2rem] overflow-hidden mb-6">
+            <img src="assets/ticket" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full bg-green-500 text-white text-[10px] font-black uppercase tracking-tighter">Beginner Friendly</span>
+            </div>
+        </div>
+        <div class="px-4 pb-4">
+            <div class="flex justify-between items-start mb-2">
+                <h4 class="text-2xl font-black dark:text-white">Ticket to Ride</h4>
+                <span class="text-primary font-black">$Free*</span>
+            </div>
+            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">A cross-country train adventure where players collect cards of various types of train cars.</p>
+            
+            <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-700">
+                <div class="flex items-center gap-4 text-xs font-bold text-slate-400">
+                    <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4"></i> 2-5</span>
+                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 45m</span>
+                </div>
+                <i data-lucide="arrow-right" class="text-primary w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="group bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] p-4 border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all duration-500 shadow-xl hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
+        <div class="relative h-64 rounded-[2rem] overflow-hidden mb-6">
+            <img src="assets/caten" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full bg-blue-500 text-white text-[10px] font-black uppercase tracking-tighter">Intermediate</span>
+            </div>
+        </div>
+        <div class="px-4 pb-4">
+            <div class="flex justify-between items-start mb-2">
+                <h4 class="text-2xl font-black dark:text-white">Catan</h4>
+                <span class="text-primary font-black">$Free*</span>
+            </div>
+            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Trade, build, and settle the Island of Catan in this legendary strategy masterpiece.</p>
+            
+            <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-700">
+                <div class="flex items-center gap-4 text-xs font-bold text-slate-400">
+                    <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4"></i> 3-4</span>
+                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 90m</span>
+                </div>
+                <i data-lucide="arrow-right" class="text-primary w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+        <div class="mt-16 text-center">
+            <p class="text-slate-500 dark:text-slate-400 font-medium">
+                Don't see your favorite? <a href="#" class="text-primary font-black hover:underline underline-offset-4 decoration-wavy">Suggest a game</a> for our next update.
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Hide scrollbar for the filter chips on mobile */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+<section id="book-now" class="py-24 px-4 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto relative group">
+        
+        <div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+        
+        <div class="relative bg-white dark:bg-slate-800 rounded-[3rem] p-8 md:p-20 overflow-hidden border border-slate-100 dark:border-slate-700 text-center shadow-2xl">
+            
+            <div class="hidden lg:block absolute -top-10 -left-10 opacity-10 -rotate-12 group-hover:rotate-12 transition-transform duration-700">
+                <i data-lucide="dice-5" class="w-48 h-48 text-primary"></i>
+            </div>
+            <div class="hidden lg:block absolute -bottom-16 -right-10 opacity-10 rotate-12 group-hover:-rotate-12 transition-transform duration-700">
+                <i data-lucide="dice-6" class="w-56 h-56 text-primary"></i>
+            </div>
+
+            <div class="relative z-10" data-aos="zoom-in">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-black uppercase tracking-widest mb-8">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    Tables Available for Tonight
+                </div>
+
+                <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tight dark:text-white leading-tight">
+                    Ready to Start Your <br>
+                    <span class="text-primary italic">Next Adventure?</span>
+                </h2>
+                
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Whether it's a casual coffee and a quick round of Catan or an epic 6-hour D&D campaign, your table is waiting. Reserve now to skip the queue!
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a href="book.html">
+  <button class="w-full sm:w-auto bg-primary text-white px-10 py-5 rounded-2xl font-black text-xl hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/40 transition-all active:scale-95 flex items-center justify-center gap-3">
+                        Book Your Table <i data-lucide="calendar-check" class="w-6 h-6"></i>
+                    </button>
+                  </a>
+                  
+                    <a href="contact.html">
+ <button class="w-full sm:w-auto bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-slate-200 dark:hover:bg-slate-600 transition-all flex items-center justify-center gap-3">
+                        Call the Café <i data-lucide="phone" class="w-6 h-6"></i>
+                    </button>
+                    </a>
+                   
+                </div>
+
+                <p class="mt-8 text-sm text-slate-500 dark:text-slate-400">
+                    Planning a larger party? <a href="#" class="text-primary font-bold hover:underline decoration-wavy">Check our Private Event rates</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <footer class="bg-white dark:bg-slate-950 pt-20 pb-10 border-t dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-8">
+            
+            <div class="lg:col-span-1">
+                <a href="index.html">
+ <div class="flex items-center gap-2 mb-6 group cursor-default">
+                    <i data-lucide="dices" class="text-primary w-8 h-8 group-hover:rotate-12 transition-transform"></i>
+                    <span class="text-xl font-black uppercase tracking-tighter dark:text-white">Dice & Beans</span>
+                </div>
+                </a>
+               
+                <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                    Creating memories, one move at a time. The city's favorite spot for strategy, community, and craft coffee.
+                </p>
+                <div class="flex gap-3">
+                    <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white hover:-translate-y-1 transition-all shadow-sm">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white hover:-translate-y-1 transition-all shadow-sm">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white hover:-translate-y-1 transition-all shadow-sm">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-7 text-slate-900 dark:text-white text-sm uppercase tracking-widest">Quick Links</h4>
+                <ul class="space-y-4">
+                    <li><a href="index.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Home</a></li>
+                    <li><a href="service.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Services</a></li>
+                    <li><a href="gallery.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Gallery</a></li>
+                    <li><a href="about.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">About Us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-7 text-slate-900 dark:text-white text-sm uppercase tracking-widest">Resources</h4>
+                <ul class="space-y-4">
+                    <li><a href="home2.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Home2</a></li>
+                    <li><a href="404.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">404 Page</a></li>
+                    <li><a href="comingsoon.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Coming Soon</a></li>
+                    <li><a href="book.html" class="text-primary font-bold hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Book a Table!</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-7 text-slate-900 dark:text-white text-sm uppercase tracking-widest">Contact Us</h4>
+                <div class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                    <p class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary shrink-0"></i>
+                        123 Gamer Street, Board City
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <i data-lucide="mail" class="w-5 h-5 text-primary shrink-0"></i>
+                        hello@dicebeans.com
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <i data-lucide="phone" class="w-5 h-5 text-primary shrink-0"></i>
+                        +1 (555) 000-1234
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1">
+                <h4 class="font-bold mb-7 text-slate-900 dark:text-white text-sm uppercase tracking-widest">Newsletter</h4>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                    Join our community for weekly tournaments and new arrivals.
+                </p>
+                <div class="relative">
+                    <input type="email" placeholder="Your email" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm transition-all pr-12">
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white p-2 rounded-xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs">
+            <p>© 2026 Dice & Beans Board Game Café. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-primary transition-colors">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Select common elements
+    const html = document.documentElement;
+
+    // --- Dark Mode Logic ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+        themeIcon.setAttribute('data-lucide', 'sun');
+        lucide.createIcons();
+    }
+
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        const isDark = html.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+        lucide.createIcons();
+    });
+
+    // --- LTR/RTL Toggle with Local Storage Persistence ---
+    const dirButtons = [document.getElementById('dir-toggle'), document.getElementById('mobile-dir-toggle')];
+    
+    // 1. Check for saved direction on page load
+    const savedDir = localStorage.getItem('site-direction') || 'ltr';
+    html.setAttribute('dir', savedDir);
+    dirButtons.forEach(b => {
+        if (b) b.innerText = savedDir.toUpperCase();
+    });
+
+    // 2. Add Event Listeners to toggle and save
+    dirButtons.forEach(btn => {
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            const currentDir = html.getAttribute('dir') || 'ltr';
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            
+            // Apply to HTML
+            html.setAttribute('dir', newDir);
+            
+            // Save to Local Storage
+            localStorage.setItem('site-direction', newDir);
+            
+            // Sync text on all direction buttons
+            dirButtons.forEach(b => {
+                if (b) b.innerText = newDir.toUpperCase();
+            });
+        });
+    });
+
+    // --- Mobile Menu Toggle ---
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // --- Nav Active State (Manual Click) ---
+    const allLinks = document.querySelectorAll('.desktop-link, .mobile-link');
+    
+    allLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Remove active classes from all
+            allLinks.forEach(l => {
+                l.classList.remove('active', 'text-primary', 'font-bold', 'border-b-2', 'border-primary');
+                // Re-add default desktop styles
+                if(l.classList.contains('desktop-link')) {
+                    l.classList.add('text-slate-600', 'dark:text-slate-300');
+                }
+            });
+
+            // Add active classes to clicked link
+            link.classList.add('active', 'text-primary', 'font-bold');
+            if(link.classList.contains('desktop-link')) {
+                link.classList.add('border-b-2', 'border-primary');
+            }
+
+            // Close mobile menu on link click
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    });
+</script>
+</body>
+</html>

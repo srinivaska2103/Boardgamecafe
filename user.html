@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
+    <!-- <link rel="icon" href="assets/game-center.png"> -->
+    <title>Player Dashboard | Dice & Beans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: '#f97316', secondary: '#7c3aed' } } }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .mobile-nav-transition { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 h-full flex overflow-hidden transition-colors duration-300">
+
+    <div id="nav-overlay" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/50 z-40 hidden backdrop-blur-sm transition-opacity"></div>
+
+    <aside id="main-sidebar" class="fixed inset-y-0 left-0 lg:static lg:flex flex-col w-72 bg-white dark:bg-slate-900 border-r dark:border-slate-800 p-6 shrink-0 h-full z-50 -translate-x-full lg:translate-x-0 mobile-nav-transition shadow-2xl lg:shadow-none">
+        
+        <div class="flex items-center justify-between mb-12">
+            <a href="index.html">
+<div class="flex items-center gap-3">
+                <div class="bg-primary p-2 rounded-xl text-white shadow-lg shadow-orange-500/20">
+                    <i data-lucide="dices" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xl font-black uppercase tracking-tighter">Dice & Beans</span>
+            </div>
+            </a>
+            
+            <button onclick="toggleMobileMenu()" class="lg:hidden p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+       <nav class="flex-grow space-y-2">
+    <button onclick="switchTab('booking')" 
+            class="tab-btn w-full flex items-center gap-4 px-4 py-3 rounded-2xl font-bold transition-all duration-300 group hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-orange-500/30 text-slate-600 dark:text-slate-300" 
+            data-tab="booking">
+        <i data-lucide="calendar-days" class="w-5 h-5 transition-transform group-hover:scale-110"></i> 
+        <span>Book Table</span>
+    </button>
+
+    <button onclick="switchTab('library')" 
+            class="tab-btn w-full flex items-center gap-4 px-4 py-3 rounded-2xl font-bold transition-all duration-300 group hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-orange-500/30 text-slate-600 dark:text-slate-300" 
+            data-tab="library">
+        <i data-lucide="library" class="w-5 h-5 transition-transform group-hover:scale-110"></i> 
+        <span>Game Vault</span>
+    </button>
+
+    <button onclick="switchTab('menu')" 
+            class="tab-btn w-full flex items-center gap-4 px-4 py-3 rounded-2xl font-bold transition-all duration-300 group hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-orange-500/30 text-slate-600 dark:text-slate-300" 
+            data-tab="menu">
+        <i data-lucide="coffee" class="w-5 h-5 transition-transform group-hover:scale-110"></i> 
+        <span>Pre-order Food</span>
+    </button>
+</nav>
+
+        <div class="pt-6 border-t dark:border-slate-800 space-y-4">
+            <div class="flex justify-between items-center bg-slate-50 dark:bg-slate-800 p-2 rounded-2xl">
+                <button id="theme-toggle" class="p-2 rounded-lg hover:bg-white dark:hover:bg-slate-700 transition-all"><i data-lucide="moon" id="theme-icon" class="w-4 h-4"></i></button>
+                <button id="dir-toggle" class="px-3 py-1 font-black text-[10px] rounded-lg hover:bg-white dark:hover:bg-slate-700">LTR</button>
+                <a href="login.html" class="p-2 text-red-500 hover:scale-110 transition-transform"><i data-lucide="log-out" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-grow flex flex-col h-full overflow-hidden relative">
+        
+        <header class="lg:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 px-6 py-4 flex justify-between items-center shrink-0 z-30">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleMobileMenu()" class="p-2 -ml-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <span class="font-black uppercase tracking-tighter text-sm">Dashboard</span>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center text-[10px] font-black text-primary border border-primary/30">
+                    VB
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-grow overflow-y-auto p-6 md:p-10">
+            
+           <section id="booking" class="tab-content active space-y-8">
+    <div class="max-w-6xl" data-aos="fade-up">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tight dark:text-white">Reservations</h1>
+                <p class="text-slate-500">Secure your strategy session at <span class="text-primary font-bold">Dice & Beans</span>.</p>
+            </div>
+            <div class="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-2xl">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span class="text-[10px] font-black uppercase tracking-widest text-green-600 dark:text-green-400">8 Tables Free Now</span>
+            </div>
+        </div>
+        
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 md:p-10 shadow-xl border dark:border-slate-800">
+                    <form class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-black uppercase text-primary tracking-widest">1. Pick a Date</label>
+                                <div class="relative">
+                                    <i data-lucide="calendar" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                                    <input type="date" class="w-full bg-slate-50 dark:bg-slate-800 p-4 pl-12 rounded-2xl outline-none focus:ring-2 ring-primary/50 transition-all dark:text-white border-transparent">
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label class="text-xs font-black uppercase text-primary tracking-widest">2. Table Type</label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button type="button" class="p-4 rounded-2xl border-2 border-primary bg-primary/5 text-xs font-bold transition-all text-primary">Standard<br><span class="opacity-60 text-[10px]">2-4 Players</span></button>
+                                    <button type="button" class="p-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 text-xs font-bold transition-all hover:border-primary/50">Large<br><span class="opacity-60 text-[10px]">5-8 Players</span></button>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-black uppercase text-primary tracking-widest">3. Available Slots</label>
+                                <div class="flex flex-wrap gap-2">
+                                    <button type="button" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold hover:bg-primary hover:text-white transition-all">04:00 PM</button>
+                                    <button type="button" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-bold">06:30 PM</button>
+                                    <button type="button" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold hover:bg-primary hover:text-white transition-all">09:00 PM</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-800 relative group h-full min-h-[250px]">
+                                <img src="assets/interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Cafe Layout">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                                    <button type="button" class="bg-white/20 backdrop-blur-md border border-white/30 text-white w-full py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 hover:bg-white/40 transition-all">
+                                        <i data-lucide="map" class="w-4 h-4"></i> View Interactive Floor Map
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-2 pt-4">
+                            <button class="w-full bg-primary text-white py-5 rounded-[1.5rem] font-black text-lg shadow-xl shadow-orange-500/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 group">
+                                Confirm Reservation
+                                <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-slate-900 rounded-[2.5rem] p-8 text-white relative overflow-hidden group">
+                    <i data-lucide="graduation-cap" class="absolute -right-4 -top-4 w-24 h-24 text-white/5 rotate-12 group-hover:rotate-0 transition-transform duration-700"></i>
+                    <h4 class="text-xl font-black mb-4 uppercase">Add a Rule Master</h4>
+                    <p class="text-sm text-slate-400 mb-6">Want to learn a complex game? Pre-book a Game Master to teach your table. No manuals, just play.</p>
+                    <button class="w-full py-3 rounded-xl bg-white/10 border border-white/20 font-bold text-xs hover:bg-white hover:text-slate-900 transition-all">Add for $10</button>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border dark:border-slate-800">
+                    <h4 class="text-lg font-black mb-4 dark:text-white uppercase tracking-tight">Booking Policy</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-xs text-slate-500">
+                            <i data-lucide="info" class="w-4 h-4 text-primary shrink-0"></i>
+                            <span>15-minute grace period for late arrivals.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-xs text-slate-500">
+                            <i data-lucide="info" class="w-4 h-4 text-primary shrink-0"></i>
+                            <span>Cancel up to 2 hours before for a full refund.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <section id="library" class="tab-content space-y-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+            <h1 class="text-3xl font-black uppercase tracking-tight dark:text-white">The <span class="text-primary">Vault</span></h1>
+            <p class="text-xs text-slate-500 font-bold uppercase tracking-widest mt-1">Explore 500+ Board Games</p>
+        </div>
+        <div class="flex items-center gap-3 w-full md:w-auto">
+            <div class="relative flex-grow md:w-64">
+                <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                <input type="text" placeholder="Search titles..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl pl-10 pr-4 py-3 text-sm focus:ring-2 ring-primary/50 outline-none transition-all">
+            </div>
+            <button class="p-3 bg-white dark:bg-slate-900 border dark:border-slate-800 rounded-2xl hover:text-primary transition-colors">
+                <i data-lucide="sliders-horizontal" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+        <button class="px-5 py-2 rounded-full bg-primary text-white font-black text-xs whitespace-nowrap shadow-lg shadow-orange-500/20">All Games</button>
+        <button class="px-5 py-2 rounded-full bg-white dark:bg-slate-900 border dark:border-slate-800 font-bold text-xs whitespace-nowrap hover:border-primary transition-all">Strategy</button>
+        <button class="px-5 py-2 rounded-full bg-white dark:bg-slate-900 border dark:border-slate-800 font-bold text-xs whitespace-nowrap hover:border-primary transition-all">Party</button>
+        <button class="px-5 py-2 rounded-full bg-white dark:bg-slate-900 border dark:border-slate-800 font-bold text-xs whitespace-nowrap hover:border-primary transition-all">Expert</button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-[2.5rem] border dark:border-slate-800 group hover:border-primary transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10">
+            <div class="relative h-56 rounded-[1.8rem] overflow-hidden mb-5">
+                <img src="assets/caten" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute top-4 left-4 flex gap-2">
+                    <span class="bg-green-500 text-white text-[8px] font-black px-2 py-1 rounded-lg uppercase">Available</span>
+                    <span class="bg-black/50 backdrop-blur-md text-white text-[8px] font-black px-2 py-1 rounded-lg uppercase">Intermediate</span>
+                </div>
+            </div>
+            <div class="px-2">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-black text-xl dark:text-white">Catan</h4>
+                    <button class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="heart" class="w-5 h-5"></i></button>
+                </div>
+                <p class="text-sm text-slate-500 mb-4">Master resource management and build the ultimate settlement.</p>
+                <div class="flex items-center justify-between pt-4 border-t dark:border-slate-800">
+                    <div class="flex gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                        <span class="flex items-center gap-1"><i data-lucide="users" class="w-3 h-3"></i> 3-4 Players</span>
+                        <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 90m</span>
+                    </div>
+                    <button class="bg-primary/10 text-primary p-2 rounded-xl group-hover:bg-primary group-hover:text-white transition-all">
+                        <i data-lucide="bookmark-plus" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-[2.5rem] border dark:border-slate-800 group hover:border-primary transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10">
+            <div class="relative h-56 rounded-[1.8rem] overflow-hidden mb-5">
+                <img src="assets/ticket" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute top-4 left-4 flex gap-2">
+                    <span class="bg-orange-500 text-white text-[8px] font-black px-2 py-1 rounded-lg uppercase">In Use</span>
+                    <span class="bg-black/50 backdrop-blur-md text-white text-[8px] font-black px-2 py-1 rounded-lg uppercase">Beginner</span>
+                </div>
+            </div>
+            <div class="px-2">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-black text-xl dark:text-white">Ticket to Ride</h4>
+                    <button class="text-red-500 transition-colors"><i data-lucide="heart" class="w-5 h-5 fill-current"></i></button>
+                </div>
+                <p class="text-sm text-slate-500 mb-4">Connect world-famous cities and build your rail empire.</p>
+                <div class="flex items-center justify-between pt-4 border-t dark:border-slate-800">
+                    <div class="flex gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                        <span class="flex items-center gap-1"><i data-lucide="users" class="w-3 h-3"></i> 2-5 Players</span>
+                        <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 45m</span>
+                    </div>
+                    <button class="bg-slate-100 dark:bg-slate-800 text-slate-400 p-2 rounded-xl cursor-not-allowed">
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-[2.5rem] border dark:border-slate-800 group hover:border-primary transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10">
+            <div class="relative h-56 rounded-[1.8rem] overflow-hidden mb-5">
+                <img src="assets/azul" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute top-4 left-4 flex gap-2">
+                    <span class="bg-green-500 text-white text-[8px] font-black px-2 py-1 rounded-lg uppercase">Available</span>
+                    <span class="bg-black/50 backdrop-blur-md text-white text-[8px] font-black px-2 py-1 rounded-lg uppercase">Expert</span>
+                </div>
+            </div>
+            <div class="px-2">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-black text-xl dark:text-white">Scythe</h4>
+                    <button class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="heart" class="w-5 h-5"></i></button>
+                </div>
+                <p class="text-sm text-slate-500 mb-4">Engine building and territory control in an 1920s alternate history.</p>
+                <div class="flex items-center justify-between pt-4 border-t dark:border-slate-800">
+                    <div class="flex gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                        <span class="flex items-center gap-1"><i data-lucide="users" class="w-3 h-3"></i> 1-5 Players</span>
+                        <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 115m</span>
+                    </div>
+                    <button class="bg-primary/10 text-primary p-2 rounded-xl group-hover:bg-primary group-hover:text-white transition-all">
+                        <i data-lucide="bookmark-plus" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+           <section id="menu" class="tab-content space-y-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+            <h1 class="text-3xl font-black uppercase tracking-tight dark:text-white">Table <span class="text-primary">Snacks</span></h1>
+            <p class="text-xs text-slate-500 font-bold uppercase tracking-widest mt-1">Direct to your game table</p>
+        </div>
+        <div class="relative w-full md:w-64">
+            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+            <input type="text" placeholder="Search menu..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl pl-10 pr-4 py-3 text-sm focus:ring-2 ring-primary/50 outline-none transition-all">
+        </div>
+    </div>
+
+    <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+        <button class="px-6 py-2 rounded-full bg-primary text-white font-black text-xs whitespace-nowrap">All Items</button>
+        <button class="px-6 py-2 rounded-full bg-white dark:bg-slate-900 border dark:border-slate-800 font-bold text-xs whitespace-nowrap hover:border-primary transition-all">☕ Coffee</button>
+        <button class="px-6 py-2 rounded-full bg-white dark:bg-slate-900 border dark:border-slate-800 font-bold text-xs whitespace-nowrap hover:border-primary transition-all">🍿 Snacks</button>
+        <button class="px-6 py-2 rounded-full bg-white dark:bg-slate-900 border dark:border-slate-800 font-bold text-xs whitespace-nowrap hover:border-primary transition-all">🍕 Platters</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        
+        <div class="flex items-center gap-5 bg-white dark:bg-slate-900 p-5 rounded-[2rem] border dark:border-slate-800 group hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-1 transition-all duration-300">
+            <div class="relative shrink-0">
+                <img src="assets/3coffe" class="w-24 h-24 rounded-2xl object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute -top-2 -left-2 bg-orange-500 text-white text-[8px] font-black px-2 py-1 rounded-lg uppercase shadow-lg">Popular</div>
+            </div>
+            <div class="flex-grow">
+                <h4 class="font-black text-lg leading-tight dark:text-white">Artisan Espresso</h4>
+                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest mt-1">Double Shot</p>
+                <p class="text-primary font-black mt-2 text-xl">$4.00</p>
+            </div>
+            <button class="bg-primary text-white p-3 rounded-2xl shadow-lg shadow-orange-500/20 hover:scale-110 active:scale-90 transition-all">
+                <i data-lucide="plus" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div class="flex items-center gap-5 bg-white dark:bg-slate-900 p-5 rounded-[2rem] border dark:border-slate-800 group hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-1 transition-all duration-300">
+            <div class="shrink-0">
+                <img src="assets/chcake" class="w-24 h-24 rounded-2xl object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="flex-grow">
+                <h4 class="font-black text-lg leading-tight dark:text-white">Nacho Platter</h4>
+                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest mt-1">With Extra Cheese</p>
+                <p class="text-primary font-black mt-2 text-xl">$8.50</p>
+            </div>
+            <button class="bg-primary text-white p-3 rounded-2xl shadow-lg shadow-orange-500/20 hover:scale-110 active:scale-90 transition-all">
+                <i data-lucide="plus" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div class="flex items-center gap-5 bg-white dark:bg-slate-900 p-5 rounded-[2rem] border dark:border-slate-800 group hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-1 transition-all duration-300">
+            <div class="shrink-0">
+                <img src="assets/cake" class="w-24 h-24 rounded-2xl object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="flex-grow">
+                <h4 class="font-black text-lg leading-tight dark:text-white">Glazed Donuts</h4>
+                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest mt-1">Set of Three</p>
+                <p class="text-primary font-black mt-2 text-xl">$5.00</p>
+            </div>
+            <button class="bg-primary text-white p-3 rounded-2xl shadow-lg shadow-orange-500/20 hover:scale-110 active:scale-90 transition-all">
+                <i data-lucide="plus" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="fixed bottom-24 left-6 right-6 md:left-auto md:right-8 md:bottom-8 z-50">
+        <button class="w-full md:w-auto bg-slate-900 dark:bg-primary text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center justify-between gap-6 hover:scale-105 transition-all">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                    <span class="absolute -top-2 -right-2 bg-white text-primary text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center">2</span>
+                </div>
+                <span class="font-bold text-sm">View Order</span>
+            </div>
+            <span class="font-black">$12.50</span>
+        </button>
+    </div>
+</section>
+
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // TAB SWITCHING
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('bg-primary', 'text-white');
+                b.classList.add('text-slate-500');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+            if(activeBtn) {
+                activeBtn.classList.add('bg-primary', 'text-white');
+                activeBtn.classList.remove('text-slate-500');
+            }
+            
+            // Auto-close menu on mobile after selection
+            if(window.innerWidth < 1024) toggleMobileMenu();
+        }
+
+        // MOBILE MENU LOGIC
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('main-sidebar');
+            const overlay = document.getElementById('nav-overlay');
+            const isHidden = sidebar.classList.contains('-translate-x-full');
+
+            if(isHidden) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // THEME & DIR LOGIC
+        const html = document.documentElement;
+        function updateThemeIcon() {
+            const isDark = html.classList.contains('dark');
+            document.getElementById('theme-icon').setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        }
+
+        document.getElementById('theme-toggle').onclick = () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeIcon();
+        };
+
+        document.getElementById('dir-toggle').onclick = () => {
+            const newDir = html.getAttribute('dir') === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('dir', newDir);
+            document.getElementById('dir-toggle').innerText = newDir.toUpperCase();
+        };
+
+        // Init
+        if (localStorage.theme === 'dark') html.classList.add('dark');
+        if (localStorage.dir) {
+            html.setAttribute('dir', localStorage.dir);
+            document.getElementById('dir-toggle').innerText = localStorage.dir.toUpperCase();
+        }
+        updateThemeIcon();
+        switchTab('booking');
+    </script>
+</body>
+</html>

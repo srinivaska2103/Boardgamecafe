@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
+    <!-- <link rel="icon" href="assets/game-center.png"> -->
+    <title>404 - Table Not Found | Dice & Beans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: '#f97316' } } }
+        }
+    </script>
+    <style>
+        @keyframes wobble {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        .animate-wobble { animation: wobble 3s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 h-screen overflow-hidden flex flex-col">
+
+    <nav class="p-6 flex justify-end gap-4 shrink-0 relative z-10">
+        <button id="theme-toggle" class="p-3 rounded-2xl bg-white dark:bg-slate-800 shadow-lg border dark:border-slate-700 hover:ring-2 ring-primary transition-all">
+            <i data-lucide="moon" id="theme-icon" class="w-5 h-5"></i>
+        </button>
+        <button id="dir-toggle" class="p-3 rounded-2xl bg-white dark:bg-slate-800 shadow-lg border dark:border-slate-700 font-bold text-xs hover:ring-2 ring-primary transition-all">
+            LTR
+        </button>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center justify-center px-4 text-center relative">
+        
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] dark:opacity-[0.05] select-none">
+            <h1 class="text-[20rem] md:text-[30rem] font-black italic">404</h1>
+        </div>
+
+        <div class="relative z-10 max-w-lg">
+            <div class="mb-8 inline-block animate-wobble">
+                <i data-lucide="ghost" class="w-24 h-24 md:w-32 md:h-32 text-primary opacity-80"></i>
+            </div>
+
+            <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter uppercase">
+                Table <span class="text-primary">Not Found</span>
+            </h2>
+            
+            <p class="text-lg text-slate-500 dark:text-slate-400 mb-10 leading-relaxed">
+                Looks like this meeple wandered off the board! The page you're looking for doesn't exist or has been moved to a different box.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="index.html" class="w-full sm:w-auto bg-primary text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-orange-600 transition-all shadow-xl shadow-orange-500/20 active:scale-95 flex items-center justify-center gap-2">
+                    <i data-lucide="home" class="w-5 h-5"></i> Back to Home
+                </a>
+                <button onclick="window.history.back()" class="w-full sm:w-auto bg-slate-200 dark:bg-slate-800 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition-all active:scale-95">
+                    Go Back
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-8 text-center text-xs text-slate-400 font-medium shrink-0">
+        Roll 2d6 to try again or return to safety.
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const html = document.documentElement;
+
+        // --- Theme Logic ---
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            themeIcon.setAttribute('data-lucide', 'sun');
+            lucide.createIcons();
+        }
+
+        themeBtn.onclick = () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        };
+
+        // --- LTR/RTL Logic ---
+        const dirBtn = document.getElementById('dir-toggle');
+        dirBtn.onclick = () => {
+            const currentDir = html.getAttribute('dir') || 'ltr';
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            dirBtn.innerText = newDir.toUpperCase();
+        };
+    </script>
+</body>
+</html>

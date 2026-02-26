@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
+    <!-- <link rel="icon" href="assets/game-center.png"> -->
+    <title>The Board Game Café | Play & Relax</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Tailwind Configuration for Dark Mode
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f97316', // Orange
+                        secondary: '#7c3aed', // Violet
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .active-nav { @apply text-primary font-bold border-b-2 border-primary; }
+    </style>
+    <style>
+        /* Define the active state for the nav links */
+        .desktop-link.active {
+            @apply text-primary font-bold border-b-2 border-primary;
+        }
+        
+        /* Ensure smooth transitions for hover and active states */
+        .desktop-link {
+            @apply transition-all duration-300;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+   <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20 items-center">
+        <a href="index.html">
+ <div class="flex items-center gap-2 shrink-0 cursor-pointer group">
+            <i data-lucide="dices" class="text-primary w-8 h-8 group-hover:rotate-12 transition-transform"></i>
+            <span class="text-xl md:text-2xl font-black tracking-tighter uppercase">Dice & Beans</span>
+        </div>
+        </a>
+       
+
+        <div class="hidden xl:flex items-center space-x-4">
+            <a href="index.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Home1</a>
+            <a href="home2.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Home2</a>
+            <a href="service.html" class="desktop-link active px-2 py-1 text-primary font-bold border-b-2 border-primary transition-all">Services</a>
+            <a href="gallery.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Gallery</a>
+            <a href="about.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">About</a>
+            <a href="contact.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-2 md:gap-4">
+            
+            <div class="hidden md:flex items-center gap-2">
+                <a href="login.html">
+                                    <button class="text-primary border border-primary px-4 py-2 rounded-full font-bold hover:bg-primary hover:text-white transition">Register</button>
+
+                </a>
+                <a href="book.html">
+                <button class="bg-primary text-white px-4 py-2 rounded-full font-bold hover:bg-orange-600 transition shadow-lg shadow-orange-500/20">Book Now</button>
+
+                </a>
+            </div>
+
+            <div class="flex items-center gap-1 md:gap-2 border-l pl-2 md:pl-4 dark:border-slate-700">
+                <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-primary transition">
+                    <i data-lucide="moon" id="theme-icon" class="w-4 h-4 md:w-5 md:h-5"></i>
+                </button>
+                <button id="dir-toggle" class="hidden sm:block p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold hover:ring-2 ring-primary transition">LTR</button>
+            </div>
+
+            <div class="relative hidden lg:block group">
+                <button class="flex items-center gap-2 p-1 pr-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-8 h-8 rounded-full" alt="User">
+                    <span class="font-bold text-sm">User</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </button>
+                
+                <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border dark:border-slate-700 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                    <a href="user.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">My Dashboard</a>
+                    <!-- <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Settings</a> -->
+                    <!-- <hr class="my-1 border-slate-100 dark:border-slate-700"> -->
+                    <!-- <a href="#" class="block px-4 py-2 text-red-500 hover:bg-red-50 transition">Logout</a> -->
+                </div>
+            </div>
+
+            <button id="mobile-menu-btn" class="xl:hidden p-2 text-slate-600 dark:text-slate-300">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+    </div>
+</div>
+    
+    <!-- <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 flex flex-col gap-4">
+        <div class="space-y-2">
+            <a href="#" class="mobile-link block text-lg font-bold text-primary">Home1</a>
+            <a href="#" class="mobile-link block text-lg">Home2</a>
+            <a href="#" class="mobile-link block text-lg">Services</a>
+            <a href="#" class="mobile-link block text-lg">Gallery</a>
+            <a href="#" class="mobile-link block text-lg">About</a>
+            <a href="#" class="mobile-link block text-lg">Contact</a>
+        </div>
+
+        <hr class="dark:border-slate-800">
+
+        <div class="flex items-center gap-3 py-2">
+            <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
+            <div>
+                <p class="font-bold">User Name</p>
+                <a href="#" class="text-sm text-primary">View Dashboard</a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button class="border border-primary text-primary font-bold py-3 rounded-xl">Register</button>
+            <button class="bg-primary text-white font-bold py-3 rounded-xl">Book Now</button>
+        </div>
+    </div> -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 flex flex-col gap-4">
+    <div class="space-y-2">
+        <a href="index.html" class="mobile-link block text-lg">Home1</a>
+        <a href="home2.html" class="mobile-link block text-lg">Home2</a>
+        <a href="service.html" class="mobile-link block text-lg font-bold text-primary">Services</a>
+        <a href="gallery.html" class="mobile-link block text-lg">Gallery</a>
+        <a href="about.html" class="mobile-link block text-lg">About</a>
+        <a href="contact.html" class="mobile-link block text-lg">Contact</a>
+    </div>
+
+    <hr class="dark:border-slate-800">
+
+    <div class="flex items-center justify-between py-2">
+        <div class="flex items-center gap-3">
+            <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
+            <div>
+                <p class="font-bold">User Name</p>
+                <a href="user.html" class="text-sm text-primary">View Dashboard</a>
+            </div>
+        </div>
+        
+        <button id="mobile-dir-toggle" class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold border dark:border-slate-700 hover:ring-2 ring-primary transition">
+            LTR
+        </button>
+    </div>
+
+   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-md mx-auto px-4">
+    <a href="login.html" class="w-full block group">
+        <button class="w-full border-2 border-primary text-primary font-black py-4 rounded-2xl 
+                       hover:bg-primary/5 active:scale-95 transition-all duration-200 
+                       text-sm md:text-base uppercase tracking-widest shadow-sm">
+            Register
+        </button>
+    </a>
+
+    <a href="book.html" class="w-full block group">
+        <button class="w-full bg-primary text-white font-black py-4 rounded-2xl 
+                       shadow-lg shadow-orange-500/30 hover:bg-orange-600 
+                       hover:shadow-orange-500/40 active:scale-95 transition-all duration-200 
+                       text-sm md:text-base uppercase tracking-widest flex items-center justify-center gap-2">
+            Book Now
+            <i data-lucide="calendar-check" class="w-4 h-4 md:w-5 h-5"></i>
+        </button>
+    </a>
+</div>
+</div>
+</nav>
+<header class="relative min-h-[90vh] flex items-center pt-24 pb-16 px-6 overflow-hidden bg-white dark:bg-slate-900 transition-colors duration-500">
+    
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 -z-10 hidden lg:block"></div>
+    <div class="absolute top-1/4 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-10 right-1/4 w-64 h-64 bg-secondary/10 rounded-full blur-3xl animate-bounce duration-[6000ms]"></div>
+
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+        
+        <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-primary text-xs font-black uppercase tracking-[0.2em]">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                Now Open: New Game Vault
+            </div>
+
+            <h1 class="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter dark:text-white">
+                Roll the Dice. <br>
+                <span class="text-primary italic relative inline-block group cursor-default">
+                    Brew the Joy.
+                    <span class="absolute bottom-2 left-0 w-0 h-3 bg-primary/10 group-hover:w-full transition-all duration-500 -z-10"></span>
+                </span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed">
+                Step away from the screens and into a world of strategy, laughter, and artisan coffee. Your seat at the table is waiting.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+               <a href="book.html">
+ <button class="group relative px-8 py-5 bg-primary text-white font-black text-xl rounded-2xl shadow-2xl shadow-orange-500/30 hover:scale-105 active:scale-95 transition-all overflow-hidden">
+                    <span class="relative z-10 flex items-center gap-3">
+                        Book a Table <i data-lucide="calendar-days" class="w-6 h-6"></i>
+                    </span>
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                </button>
+               </a>
+               
+                
+                <button class="px-8 py-5 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 font-black text-xl rounded-2xl hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-3 dark:text-white">
+                    Explore Games <i data-lucide="dices" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <div class="flex items-center gap-8 pt-8 border-t border-slate-100 dark:border-slate-800">
+                <div>
+                    <p class="text-2xl font-black dark:text-white">500+</p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Board Games</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-black dark:text-white">4.9/5</p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Player Rating</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative group" data-aos="zoom-in" data-aos-duration="1200">
+            <div class="absolute -inset-4 bg-gradient-to-tr from-primary/30 to-secondary/30 rounded-[3rem] blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+            
+            <div class="relative rounded-[3rem] overflow-hidden border-8 border-white dark:border-slate-800 shadow-2xl transform transition-transform duration-700 group-hover:-rotate-2 group-hover:scale-[1.02]">
+                <img src="assets/servicecafe" 
+                     alt="Board Game Cafe" 
+                     class="w-full h-[500px] md:h-[650px] object-cover transition-transform duration-[3000ms] group-hover:scale-110">
+                
+                <div class="absolute bottom-8 left-8 right-8 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-6 rounded-3xl shadow-2xl translate-y-20 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 border border-white/20">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-white">
+                                <i data-lucide="coffee"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-lg dark:text-white">The Grand Master Roast</h4>
+                                <p class="text-xs text-slate-500">Our signature blend is back in stock!</p>
+                            </div>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="text-primary w-6 h-6"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="absolute -top-10 -right-10 w-32 h-32 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl flex items-center justify-center animate-bounce duration-[4000ms] hidden md:flex">
+                <i data-lucide="dice-5" class="w-16 h-16 text-primary"></i>
+            </div> -->
+        </div>
+    </div>
+</header>
+
+<section id="services-grid" class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+            <h2 class="text-5xl font-black uppercase tracking-tighter dark:text-white">Our <span class="text-primary">Services</span></h2>
+            <p class="text-slate-500 dark:text-slate-400 mt-4 text-lg">Everything you need for the ultimate analog gaming experience under one roof.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="group p-10 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-orange-500/10" data-aos="fade-up">
+                <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform">
+                    <i data-lucide="library" class="text-primary w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-black mb-4 dark:text-white">Game Library Access</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Unlimited access to 500+ titles ranging from 5-minute party games to epic 6-hour strategy campaigns.</p>
+                <ul class="space-y-2 mb-8 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Beginner Friendly</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Expert Strategy</li>
+                </ul>
+                <button class="text-primary font-black flex items-center gap-2 group-hover:gap-4 transition-all">Learn More <i data-lucide="chevron-right"></i></button>
+            </div>
+
+            <div class="group p-10 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-6 transition-transform">
+                    <i data-lucide="coffee" class="text-primary w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-black mb-4 dark:text-white">Table-Side Dining</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Fuel your moves with artisan coffee, signature snacks, and shared platters served directly to your game table.</p>
+                <button class="text-primary font-black flex items-center gap-2 group-hover:gap-4 transition-all">View Menu <i data-lucide="chevron-right"></i></button>
+            </div>
+
+            <div class="group p-10 rounded-[2.5rem] bg-primary text-white shadow-2xl shadow-orange-500/20" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                    <i data-lucide="graduation-cap" class="text-white w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-black mb-4 uppercase">Rule Masters</h3>
+                <p class="opacity-90 text-sm mb-6 leading-relaxed">Don't spend an hour reading a manual. Our staff will teach you any game in our library in minutes.</p>
+                <button class="bg-white text-primary px-6 py-2 rounded-xl font-black text-xs hover:scale-105 transition-transform">Request Expert</button>
+            </div>
+            <div class="group p-10 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-orange-500/10" data-aos="fade-up" data-aos-delay="100">
+    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform">
+        <i data-lucide="trophy" class="text-primary w-8 h-8"></i>
+    </div>
+    <h3 class="text-2xl font-black mb-4 dark:text-white">Weekly Tournaments</h3>
+    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Rise through the ranks in our scheduled league nights. From Catan qualifiers to intensive Chess masters showdowns.</p>
+    <ul class="space-y-2 mb-8 text-xs font-bold text-slate-400 uppercase tracking-widest">
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Seasonal Rankings</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Exclusive Prizes</li>
+    </ul>
+    <button class="text-primary font-black flex items-center gap-2 group-hover:gap-4 transition-all">View Schedule <i data-lucide="chevron-right"></i></button>
+</div>
+<div class="group p-10 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-orange-500/10" data-aos="fade-up" data-aos-delay="200">
+    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform">
+        <i data-lucide="party-popper" class="text-primary w-8 h-8"></i>
+    </div>
+    <h3 class="text-2xl font-black mb-4 dark:text-white">Private Gatherings</h3>
+    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Host your next birthday or team-building event in our themed private rooms with dedicated Game Master service.</p>
+    <ul class="space-y-2 mb-8 text-xs font-bold text-slate-400 uppercase tracking-widest">
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Custom Catering</li>
+        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Priority Booking</li>
+    </ul>
+    <button class="text-primary font-black flex items-center gap-2 group-hover:gap-4 transition-all">Plan Event <i data-lucide="chevron-right"></i></button>
+</div>
+            <div class="group p-10 rounded-[2.5rem] bg-slate-900 text-white shadow-2xl shadow-slate-900/20" data-aos="fade-up" data-aos-delay="300">
+    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-12 transition-transform">
+        <i data-lucide="utensils" class="text-white w-8 h-8"></i>
+    </div>
+
+    <h3 class="text-2xl font-black mb-4 uppercase tracking-tight">Table-Side Dining</h3>
+    <p class="opacity-80 text-sm mb-6 leading-relaxed">
+        Fuel your strategy sessions with artisan coffee, signature snacks, and shared platters served directly to your gaming table.
+    </p>
+
+    <button class="bg-primary text-white px-8 py-3 rounded-2xl font-black text-xs hover:bg-orange-600 hover:scale-105 active:scale-95 transition-all shadow-lg shadow-orange-500/30">
+        Browse Menu
+    </button>
+</div>
+        </div>
+    </div>
+</section>
+<section id="service-images" class="py-24 bg-white dark:bg-slate-900 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8" data-aos="fade-up">
+            <div class="max-w-xl">
+                <span class="text-primary font-black tracking-[0.2em] uppercase text-xs mb-4 block">Visual Experience</span>
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter dark:text-white">
+                    Our Services in <span class="text-primary italic">Focus</span>
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-4 text-lg">
+                    A glimpse into the atmosphere, the flavors, and the moments that make Dice & Beans more than just a café.
+                </p>
+            </div>
+            <button class="px-8 py-4 rounded-2xl bg-slate-100 dark:bg-slate-800 font-bold hover:bg-primary hover:text-white transition-all flex items-center gap-2 dark:text-white">
+                View All Highlights <i data-lucide="layout-grid" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-xl" data-aos="fade-up">
+                <img src="assets/3coffe" 
+                     class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Cafe Dining">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+                    <div class="bg-white/20 backdrop-blur-md w-12 h-12 rounded-xl flex items-center justify-center mb-4 translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <i data-lucide="coffee"></i>
+                    </div>
+                    <h4 class="text-2xl font-black">Gourmet Brews</h4>
+                    <p class="text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 mt-2">Craft coffee and snacks served to your table.</p>
+                </div>
+            </div>
+
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-xl lg:mt-12" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/rule" 
+                     class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Rules Guru">
+                <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex flex-col justify-end p-8 text-white">
+                    <div class="bg-white/20 backdrop-blur-md w-12 h-12 rounded-xl flex items-center justify-center mb-4 translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <h4 class="text-2xl font-black">Rule Tutorials</h4>
+                    <p class="text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 mt-2">Our masters teach you any game in 10 mins.</p>
+                </div>
+            </div>
+
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                <img src="assets/socialevents" 
+                     class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Friends Playing">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+                    <div class="bg-white/20 backdrop-blur-md w-12 h-12 rounded-xl flex items-center justify-center mb-4 translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h4 class="text-2xl font-black">Social Events</h4>
+                    <p class="text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 mt-2">Weekly tournaments and themed nights.</p>
+                </div>
+            </div>
+
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-xl lg:mt-12" data-aos="fade-up" data-aos-delay="300">
+                <img src="assets/gamezone" 
+                     class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Private Party">
+                <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent flex flex-col justify-end p-8 text-white">
+                    <div class="bg-white/20 backdrop-blur-md w-12 h-12 rounded-xl flex items-center justify-center mb-4 translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <i data-lucide="party-popper"></i>
+                    </div>
+                    <h4 class="text-2xl font-black">Private Hosting</h4>
+                    <p class="text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 mt-2">Birthdays, corporate events, and parties.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="pricing" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+            <span class="text-primary font-black tracking-[0.3em] uppercase text-xs mb-4 block">Fair Play Pricing</span>
+            <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tighter dark:text-white">
+                Choose Your <span class="text-primary italic">Adventure</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 text-lg">
+                Whether you're here for a quick round or a weekend marathon, we have a pass that fits your playstyle.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+            
+            <div class="group relative p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="mb-8">
+                    <h4 class="text-xl font-black uppercase tracking-widest text-slate-400 mb-4">The Newbie</h4>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-5xl font-black dark:text-white">$5</span>
+                        <span class="text-slate-500 font-bold">/hour</span>
+                    </div>
+                </div>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-center gap-3 text-slate-600 dark:text-slate-400 font-medium">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i> Access to 500+ Games
+                    </li>
+                    <li class="flex items-center gap-3 text-slate-600 dark:text-slate-400 font-medium">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i> Standard Table Seating
+                    </li>
+                    <li class="flex items-center gap-3 opacity-40 italic">
+                        <i data-lucide="circle-dashed" class="w-5 h-5"></i> No Tournament Entry
+                    </li>
+                </ul>
+                <button class="w-full py-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 font-black hover:bg-primary hover:text-white hover:border-primary transition-all active:scale-95 dark:text-white">
+                    Start Playing
+                </button>
+            </div>
+
+            <div class="group relative p-10 rounded-[3rem] bg-white dark:bg-slate-900 border-4 border-primary shadow-2xl scale-105 z-10 overflow-hidden" data-aos="fade-up">
+                <div class="absolute top-8 -right-12 bg-primary text-white px-12 py-1 rotate-45 text-[10px] font-black uppercase tracking-widest shadow-lg">
+                    Best Value
+                </div>
+                
+                <div class="mb-8">
+                    <h4 class="text-xl font-black uppercase tracking-widest text-primary mb-4">The Strategist</h4>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-6xl font-black dark:text-white">$15</span>
+                        <span class="text-slate-500 font-bold">/day</span>
+                    </div>
+                </div>
+                <ul class="space-y-4 mb-12">
+                    <li class="flex items-center gap-3 text-slate-800 dark:text-slate-200 font-bold">
+                        <i data-lucide="sparkles" class="w-6 h-6 text-primary"></i> Unlimited Playtime
+                    </li>
+                    <li class="flex items-center gap-3 text-slate-800 dark:text-slate-200 font-bold">
+                        <i data-lucide="sparkles" class="w-6 h-6 text-primary"></i> 1 Complimentary Coffee
+                    </li>
+                    <li class="flex items-center gap-3 text-slate-800 dark:text-slate-200 font-bold">
+                        <i data-lucide="sparkles" class="w-6 h-6 text-primary"></i> Table-Side Tutorials
+                    </li>
+                </ul>
+                <button class="w-full py-5 rounded-2xl bg-primary text-white font-black text-lg hover:bg-orange-600 shadow-xl shadow-orange-500/30 transition-all active:scale-95">
+                    Claim Seat
+                </button>
+            </div>
+
+            <div class="group relative p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                <div class="mb-8">
+                    <h4 class="text-xl font-black uppercase tracking-widest text-slate-400 mb-4">The Legend</h4>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-5xl font-black dark:text-white">$45</span>
+                        <span class="text-slate-500 font-bold">/month</span>
+                    </div>
+                </div>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-center gap-3 text-slate-600 dark:text-slate-400 font-medium">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i> Priority Reservations
+                    </li>
+                    <li class="flex items-center gap-3 text-slate-600 dark:text-slate-400 font-medium">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i> 15% Off All Retail
+                    </li>
+                    <li class="flex items-center gap-3 text-slate-600 dark:text-slate-400 font-medium">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-primary"></i> Free Tournament Entry
+                    </li>
+                </ul>
+                <button class="w-full py-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 font-black hover:bg-primary hover:text-white hover:border-primary transition-all active:scale-95 dark:text-white">
+                    Join the Club
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="cta-footer" class="py-24 px-6 bg-white dark:bg-slate-950">
+    <div class="max-w-6xl mx-auto relative group">
+        
+        <div class="absolute -inset-1 bg-gradient-to-r from-primary to-orange-400 rounded-[3.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+        
+        <div class="relative bg-slate-900 dark:bg-slate-900 rounded-[3rem] p-12 md:p-20 overflow-hidden text-center">
+            
+            <div class="absolute top-10 left-10 opacity-10 -rotate-12 animate-bounce duration-[4000ms]">
+                <i data-lucide="dice-5" class="w-32 h-32 text-white"></i>
+            </div>
+            <div class="absolute bottom-10 right-10 opacity-10 rotate-12 animate-bounce duration-[5000ms]">
+                <i data-lucide="dice-2" class="w-24 h-24 text-white"></i>
+            </div>
+
+            <div class="relative z-10" data-aos="zoom-in">
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
+                    Your Next Turn <br>
+                    <span class="text-primary italic">Starts Here.</span>
+                </h2>
+                <p class="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Grab your friends, pick a meeple, and let the games begin. Table spots fill up fast—secure yours today!
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                    <button class="px-12 py-5 bg-primary text-white font-black text-xl rounded-2xl shadow-xl shadow-orange-500/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3">
+                        Book Your Table <i data-lucide="calendar-plus" class="w-6 h-6"></i>
+                    </button>
+                    
+                    <button class="px-12 py-5 bg-white/10 backdrop-blur-md text-white font-black text-xl rounded-2xl border border-white/20 hover:bg-white/20 transition-all flex items-center justify-center gap-3">
+                        View Game List <i data-lucide="search" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <div class="mt-12 flex items-center justify-center gap-6 text-slate-500 text-xs font-bold uppercase tracking-widest">
+                    <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4"></i> No Credit Card Required</span>
+                    <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4"></i> Instant Confirmation</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <footer class="bg-white dark:bg-slate-950 pt-20 pb-10 border-t dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-8">
+            
+            <div class="lg:col-span-1">
+                <a href="index.html">
+ <div class="flex items-center gap-2 mb-6 group cursor-default">
+                    <i data-lucide="dices" class="text-primary w-8 h-8 group-hover:rotate-12 transition-transform"></i>
+                    <span class="text-xl font-black uppercase tracking-tighter dark:text-white">Dice & Beans</span>
+                </div>
+                </a>
+               
+                <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                    Creating memories, one move at a time. The city's favorite spot for strategy, community, and craft coffee.
+                </p>
+                <div class="flex gap-3">
+                    <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white hover:-translate-y-1 transition-all shadow-sm">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white hover:-translate-y-1 transition-all shadow-sm">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white hover:-translate-y-1 transition-all shadow-sm">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-7 text-slate-900 dark:text-white text-sm uppercase tracking-widest">Quick Links</h4>
+                <ul class="space-y-4">
+                    <li><a href="index.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Home</a></li>
+                    <li><a href="service.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Services</a></li>
+                    <li><a href="gallery.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Gallery</a></li>
+                    <li><a href="about.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">About Us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-7 text-slate-900 dark:text-white text-sm uppercase tracking-widest">Resources</h4>
+                <ul class="space-y-4">
+                    <li><a href="home2.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Home2</a></li>
+                    <li><a href="404.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">404 Page</a></li>
+                    <li><a href="comingsoon.html" class="text-slate-500 dark:text-slate-400 hover:text-primary hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Coming Soon</a></li>
+                    <li><a href="book.html" class="text-primary font-bold hover:translate-x-1 flex items-center gap-2 transition-all text-sm">Book a Table!</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-7 text-slate-900 dark:text-white text-sm uppercase tracking-widest">Contact Us</h4>
+                <div class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                    <p class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary shrink-0"></i>
+                        123 Gamer Street, Board City
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <i data-lucide="mail" class="w-5 h-5 text-primary shrink-0"></i>
+                        hello@dicebeans.com
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <i data-lucide="phone" class="w-5 h-5 text-primary shrink-0"></i>
+                        +1 (555) 000-1234
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1">
+                <h4 class="font-bold mb-7 text-slate-900 dark:text-white text-sm uppercase tracking-widest">Newsletter</h4>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                    Join our community for weekly tournaments and new arrivals.
+                </p>
+                <div class="relative">
+                    <input type="email" placeholder="Your email" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm transition-all pr-12">
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white p-2 rounded-xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs">
+            <p>© 2026 Dice & Beans Board Game Café. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-primary transition-colors">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+ <script>
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Select common elements
+    const html = document.documentElement;
+
+    // --- Dark Mode Logic ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+        themeIcon.setAttribute('data-lucide', 'sun');
+        lucide.createIcons();
+    }
+
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        const isDark = html.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+        lucide.createIcons();
+    });
+
+    // --- LTR/RTL Toggle with Local Storage Persistence ---
+    const dirButtons = [document.getElementById('dir-toggle'), document.getElementById('mobile-dir-toggle')];
+    
+    // 1. Check for saved direction on page load
+    const savedDir = localStorage.getItem('site-direction') || 'ltr';
+    html.setAttribute('dir', savedDir);
+    dirButtons.forEach(b => {
+        if (b) b.innerText = savedDir.toUpperCase();
+    });
+
+    // 2. Add Event Listeners to toggle and save
+    dirButtons.forEach(btn => {
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            const currentDir = html.getAttribute('dir') || 'ltr';
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            
+            // Apply to HTML
+            html.setAttribute('dir', newDir);
+            
+            // Save to Local Storage
+            localStorage.setItem('site-direction', newDir);
+            
+            // Sync text on all direction buttons
+            dirButtons.forEach(b => {
+                if (b) b.innerText = newDir.toUpperCase();
+            });
+        });
+    });
+
+    // --- Mobile Menu Toggle ---
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // --- Nav Active State (Manual Click) ---
+    const allLinks = document.querySelectorAll('.desktop-link, .mobile-link');
+    
+    allLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Remove active classes from all
+            allLinks.forEach(l => {
+                l.classList.remove('active', 'text-primary', 'font-bold', 'border-b-2', 'border-primary');
+                // Re-add default desktop styles
+                if(l.classList.contains('desktop-link')) {
+                    l.classList.add('text-slate-600', 'dark:text-slate-300');
+                }
+            });
+
+            // Add active classes to clicked link
+            link.classList.add('active', 'text-primary', 'font-bold');
+            if(link.classList.contains('desktop-link')) {
+                link.classList.add('border-b-2', 'border-primary');
+            }
+
+            // Close mobile menu on link click
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    });
+</script>
+</body>
+</html>
