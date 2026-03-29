@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
-    <!-- <link rel="icon" href="assets/game-center.png"> -->
-    <title>Join the Table | Dice & Beans</title>
+    <title>Enter the Café | Dice & Beans</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -14,138 +13,161 @@
             theme: { extend: { colors: { primary: '#f97316' } } }
         }
     </script>
+    <style>
+        .social-btn:hover { transform: translateY(-3px); }
+        
+        /* THE FIX: Force icons to be bold and visible */
+        svg.lucide {
+            display: block !important;
+            stroke-width: 2.5px;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 h-screen overflow-hidden flex flex-col">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <nav class="p-4 flex justify-end gap-3 shrink-0">
+    <nav class="p-4 flex justify-end gap-3 shrink-0 relative z-20">
         <button id="theme-toggle" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 shadow-sm border dark:border-slate-700 hover:ring-2 ring-primary transition-all">
-            <i data-lucide="moon" id="theme-icon" class="w-5 h-5"></i>
+            <div class="w-5 h-5"><i data-lucide="moon" id="theme-icon"></i></div>
         </button>
-        <button id="dir-toggle" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 shadow-sm border dark:border-slate-700 font-bold text-xs hover:ring-2 ring-primary transition-all">
+        <button id="dir-toggle" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 shadow-sm border dark:border-slate-700 font-bold text-xs hover:ring-2 ring-primary transition-all uppercase">
             LTR
         </button>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center px-4 overflow-hidden">
-        <div class="w-full max-w-md scale-95 md:scale-100"> <div class="text-center mb-6">
-            <a href="index.html">
- <div class="inline-flex items-center gap-2 mb-1">
-                    <i data-lucide="dices" class="text-primary w-8 h-8 md:w-10 md:h-10"></i>
-                    <span class="text-2xl md:text-3xl font-black uppercase tracking-tighter">Dice & Beans</span>
-                </div>
-            </a>
-               
-             <!-- <p class="text-slate-500 dark:text-slate-400 text-sm">Your seat at the table is waiting.</p> -->
+    <main class="flex-grow flex items-center justify-center px-4 relative py-10">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="w-full max-w-md scale-95 md:scale-100 relative z-10">
+            <div class="text-center mb-8">
+                <a href="index.html" class="inline-flex items-center gap-2 group">
+                    <div class="bg-primary p-2 rounded-xl group-hover:rotate-12 transition-transform shadow-lg shadow-orange-500/20">
+                        <div class="w-8 h-8 md:w-10 md:h-10 text-white"><i data-lucide="dices"></i></div>
+                    </div>
+                    <span class="text-3xl md:text-4xl font-black uppercase tracking-tighter">Dice & Beans</span>
+                </a>
             </div>
 
-            <div class="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-slate-100 dark:border-slate-700 relative">
-                
-                <div class="flex p-1 bg-slate-100 dark:bg-slate-900 rounded-2xl mb-6">
-                    <button id="show-login" class="flex-1 py-2 rounded-xl font-bold text-sm transition-all bg-white dark:bg-slate-800 shadow-sm text-primary">Login</button>
-                    <button id="show-signup" class="flex-1 py-2 rounded-xl font-bold text-sm transition-all text-slate-500 hover:text-primary">Sign Up</button>
-                </div>
+            <div class="bg-white dark:bg-slate-900 p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-slate-100 dark:border-slate-800">
+                <h2 class="text-2xl font-black mb-6 text-center dark:text-white">Welcome Back</h2>
 
-                <div class="relative overflow-hidden">
-                    <form id="login-form" class="space-y-4">
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Email</label>
-                            <input type="email" placeholder="gamer@example.com" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:ring-2 ring-primary/50 outline-none transition-all text-sm">
-                        </div>
-                        <div class="space-y-1">
-                            <div class="flex justify-between items-center">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Password</label>
-                                <a href="#" class="text-[10px] font-bold text-primary hover:underline">Forgot?</a>
+                <form id="login-form" class="space-y-5">
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-primary ml-1">Email Address</label>
+                        <div class="relative group">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-primary transition-colors">
+                                <i data-lucide="mail"></i>
                             </div>
-                            <input type="password" placeholder="••••••••" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:ring-2 ring-primary/50 outline-none transition-all text-sm">
+                            <input type="email" required placeholder="gamer@example.com" class="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-12 py-4 focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all text-sm dark:text-white">
                         </div>
-                        <button class="w-full bg-primary text-white py-3.5 rounded-xl font-black text-base hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 active:scale-95">Enter Café</button>
-                    </form>
-
-                    <form id="signup-form" class="space-y-4 hidden">
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Full Name</label>
-                            <input type="text" placeholder="John Doe" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:ring-2 ring-primary/50 outline-none transition-all text-sm">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Email</label>
-                            <input type="email" placeholder="newgamer@example.com" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:ring-2 ring-primary/50 outline-none transition-all text-sm">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Password</label>
-                            <input type="password" placeholder="Create Password" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:ring-2 ring-primary/50 outline-none transition-all text-sm">
-                        </div>
-                        <button class="w-full bg-primary text-white py-3.5 rounded-xl font-black text-base hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 active:scale-95">Create Account</button>
-                    </form>
-                </div>
-
-                <div class="mt-6 text-center">
-                    <div class="relative mb-4">
-                        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-100 dark:border-slate-700"></div></div>
-                        <div class="relative px-3 text-[10px] font-bold text-slate-400 bg-white dark:bg-slate-800 uppercase inline-block">Or play with</div>
                     </div>
-                    <div class="flex justify-center gap-3">
-                        <button class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all"><i data-lucide="chrome" class="w-4 h-4"></i></button>
-                        <button class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all"><i data-lucide="facebook" class="w-4 h-4"></i></button>
-                        <button class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all"><i data-lucide="github" class="w-4 h-4"></i></button>
+
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-primary ml-1">Secret Key</label>
+                        <div class="relative group">
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-primary transition-colors">
+                                <i data-lucide="lock"></i>
+                            </div>
+                            <input type="password" required placeholder="••••••••" class="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-12 py-4 focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all text-sm dark:text-white">
+                        </div>
+                        <div class="flex justify-between items-center px-1 mt-2">
+    <a href="regeister.html" class="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-primary transition-colors">
+        New Player? <span class="text-primary">Sign up</span>
+    </a>
+
+    <a href="#" class="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-primary transition-colors">
+        Forgot Password?
+    </a>
+</div>
                     </div>
+
+                    <button type="submit" class="w-full bg-primary text-white py-5 rounded-[1.5rem] font-black text-lg hover:bg-orange-600 transition-all shadow-xl shadow-orange-500/30 active:scale-95 flex items-center justify-center gap-3 group">
+                        Login
+                        <div class="w-5 h-5 group-hover:translate-x-1 transition-transform"><i data-lucide="chevron-right"></i></div>
+                    </button>
+                </form>
+
+                <div class="mt-10">
+                    <div class="relative mb-6">
+                        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-100 dark:border-slate-800"></div></div>
+                        <!-- <div class="relative px-4 text-[10px] font-black text-slate-400 bg-white dark:bg-slate-900 uppercase inline-block  -translate-x-1-2">Quick Entry</div> -->
+                    </div>
+
+                  <div class="grid grid-cols-3 gap-4">
+    <button type="button" class="social-login-btn social-btn flex justify-center py-4 rounded-2xl bg-slate-100 dark:bg-slate-800 border-2 border-transparent hover:bg-[#ea4335] transition-all group shadow-sm" data-provider="Google">
+        <div class="w-6 h-6 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ea4335" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-white transition-colors">
+                <circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/>
+            </svg>
+        </div>
+    </button>
+    
+    <button type="button" class="social-login-btn social-btn flex justify-center py-4 rounded-2xl bg-slate-100 dark:bg-slate-800 border-2 border-transparent hover:bg-[#1877f2] transition-all group shadow-sm" data-provider="Facebook">
+        <div class="w-6 h-6 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1877f2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-white transition-colors">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+        </div>
+    </button>
+    
+    <button type="button" class="social-login-btn social-btn flex justify-center py-4 rounded-2xl bg-slate-100 dark:bg-slate-800 border-2 border-transparent hover:bg-black dark:hover:bg-white transition-all group shadow-sm" data-provider="X">
+        <div class="w-6 h-6 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition-colors">
+                <path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768m2.46-2.46L20 4"/>
+            </svg>
+        </div>
+    </button>
+</div>
                 </div>
             </div>
         </div>
     </main>
 
     <script>
-        lucide.createIcons();
+        // Use window.onload to ensure library is 100% ready
+        window.onload = function() {
+            lucide.createIcons();
 
-        const html = document.documentElement;
-        const loginForm = document.getElementById('login-form');
-        const signupForm = document.getElementById('signup-form');
-        const showLoginBtn = document.getElementById('show-login');
-        const showSignupBtn = document.getElementById('show-signup');
+            const html = document.documentElement;
+            const themeBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const dirBtn = document.getElementById('dir-toggle');
 
-        const toggleForms = (show) => {
-            if (show === 'signup') {
-                loginForm.classList.add('hidden');
-                signupForm.classList.remove('hidden');
-                showSignupBtn.classList.add('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-primary');
-                showSignupBtn.classList.remove('text-slate-500');
-                showLoginBtn.classList.remove('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-primary');
-                showLoginBtn.classList.add('text-slate-500');
-            } else {
-                signupForm.classList.add('hidden');
-                loginForm.classList.remove('hidden');
-                showLoginBtn.classList.add('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-primary');
-                showLoginBtn.classList.remove('text-slate-500');
-                showSignupBtn.classList.remove('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-primary');
-                showSignupBtn.classList.add('text-slate-500');
+            // --- Theme Logic ---
+            const refreshIcons = () => { lucide.createIcons(); };
+
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+                if(themeIcon) themeIcon.setAttribute('data-lucide', 'sun');
+                refreshIcons();
             }
-        };
 
-        showLoginBtn.onclick = () => toggleForms('login');
-        showSignupBtn.onclick = () => toggleForms('signup');
+            themeBtn.onclick = () => {
+                html.classList.toggle('dark');
+                const isDark = html.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+                refreshIcons();
+            };
 
-        const themeBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
+            // --- Direction Logic ---
+            const savedDir = localStorage.getItem('site-direction') || 'ltr';
+            html.setAttribute('dir', savedDir);
+            dirBtn.innerText = savedDir.toUpperCase();
 
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-            themeIcon.setAttribute('data-lucide', 'sun');
-            lucide.createIcons();
-        }
+            dirBtn.onclick = () => {
+                const currentDir = html.getAttribute('dir') || 'ltr';
+                const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                html.setAttribute('dir', newDir);
+                localStorage.setItem('site-direction', newDir);
+                dirBtn.innerText = newDir.toUpperCase();
+            };
 
-        themeBtn.onclick = () => {
-            html.classList.toggle('dark');
-            const isDark = html.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-            lucide.createIcons();
-        };
-
-        const dirBtn = document.getElementById('dir-toggle');
-        dirBtn.onclick = () => {
-            const currentDir = html.getAttribute('dir') || 'ltr';
-            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
-            html.setAttribute('dir', newDir);
-            dirBtn.innerText = newDir.toUpperCase();
+            // --- Click Events ---
+            document.querySelectorAll('.social-login-btn').forEach(button => {
+                button.onclick = () => alert(`Connecting to ${button.dataset.provider}...`);
+            });
         };
     </script>
 </body>
