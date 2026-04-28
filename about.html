@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
-    <link rel="icon" href="assets/game-center.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f97316' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M17 8h1a4 4 0 1 1 0 8h-1'/><path d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/><line x1='6' x2='6' y1='2' y2='4'/><line x1='10' x2='10' y1='2' y2='4'/><line x1='14' x2='14' y1='2' y2='4'/></svg>">    <link rel="icon" href="assets/game-center.png">
     <title>The Board Game Café | Play & Relax</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -44,8 +43,15 @@
     <div class="flex justify-between h-20 items-center">
         <a href="index.html">
  <div class="flex items-center gap-2 shrink-0 cursor-pointer group">
-            <i data-lucide="dices" class="text-primary w-8 h-8 group-hover:rotate-12 transition-transform"></i>
-            <span class="text-xl md:text-2xl font-black tracking-tighter uppercase">Dice & Beans</span>
+<div class="shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-12 transition-transform">
+            <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
+            <line x1="6" x2="6" y1="2" y2="4"/>
+            <line x1="10" x2="10" y1="2" y2="4"/>
+            <line x1="14" x2="14" y1="2" y2="4"/>
+        </svg>
+    </div>            <span class="text-xl md:text-2xl font-black tracking-tighter uppercase">Dice & Beans</span>
         </div>
         </a>
        
@@ -53,9 +59,9 @@
         <div class="hidden xl:flex items-center space-x-4">
             <a href="index.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Home1</a>
             <a href="home2.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Home2</a>
-            <a href="about.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">About</a>
+            <a href="about.html" class="desktop-link active px-2 py-1 text-primary font-bold border-b-2 border-primary transition-all">About</a>
             <a href="gallery.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Gallery</a>
-            <a href="service.html" class="desktop-link active px-2 py-1 text-primary font-bold border-b-2 border-primary transition-all">Service</a>
+            <a href="service.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Service</a>
             <a href="contact.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Contact</a>
         </div>
 
@@ -130,9 +136,9 @@
     <div class="space-y-2">
         <a href="index.html" class="mobile-link block text-lg">Home1</a>
         <a href="home2.html" class="mobile-link block text-lg">Home2</a>
-        <a href="about.html" class="mobile-link block text-lg">About</a>
+        <a href="about.html" class="mobile-link block text-lg font-bold text-primary">About</a>
         <a href="gallery.html" class="mobile-link block text-lg">Gallery</a>
-        <a href="service.html" class="mobile-link block text-lg font-bold text-primary">Service</a>
+        <a href="service.html" class="mobile-link block text-lg ">Service</a>
         <a href="contact.html" class="mobile-link block text-lg">Contact</a>
     </div>
 
@@ -204,7 +210,7 @@
                 ⭐ 01. Our Story
             </div>
             
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold font-black leading-tight tracking-tight">
                 From a Living Room <br>
                 <!-- <span class="text-primary relative inline-block">
                     Dice & Beans
@@ -241,7 +247,7 @@
     <div class="max-w-7xl mx-auto px-6">
         
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl font-black uppercase tracking-tight dark:text-white">The <span class="text-primary">Core</span> of Dice & Beans</h2>
+            <h2 class="text-4xl font-black font-semibold uppercase tracking-tight dark:text-white">The <span class="text-primary">Core</span> of Dice & Beans</h2>
             <div class="w-20 h-1.5 bg-primary mx-auto mt-4 rounded-full"></div>
         </div>
 
@@ -310,7 +316,7 @@
 <section class="py-24 px-6 bg-white dark:bg-slate-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-20" data-aos="fade-up">
-            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight dark:text-white">
+            <h2 class="text-4xl md:text-5xl font-semibold font-black uppercase tracking-tight dark:text-white">
                 🎲 Why Board Games <span class="text-primary">Matter</span>
             </h2>
             <div class="h-1.5 w-24 bg-primary mx-auto mt-4 rounded-full relative overflow-hidden">
@@ -389,7 +395,7 @@
     <div class="max-w-7xl mx-auto px-6">
         
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight dark:text-white">
+            <h2 class="text-4xl md:text-5xl font-semibold font-black uppercase tracking-tight dark:text-white">
                 👨‍👩‍👧 Meet the <span class="text-primary italic">Meeple Masters</span>
             </h2>
             <p class="text-slate-500 dark:text-slate-400 mt-4 max-w-lg mx-auto">
@@ -459,7 +465,7 @@
                     <i data-lucide="camera" class="w-4 h-4"></i>
                     Captured Joy
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter dark:text-white leading-tight">
+                <h2 class="text-4xl md:text-5xl font-semibold font-black uppercase tracking-tighter dark:text-white leading-tight">
                     📸 Memories & <span class="text-primary italic">Moments</span>
                 </h2>
                 <p class="text-slate-500 dark:text-slate-400 mt-4 text-lg">
@@ -550,7 +556,7 @@
                     <i data-lucide="library" class="w-4 h-4"></i>
                     500+ Titles Available
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter dark:text-white">
+                <h2 class="text-4xl md:text-5xl font-semibold font-black uppercase tracking-tighter dark:text-white">
                     🧩 Our Game <span class="text-primary italic">Collection</span>
                 </h2>
                 <p class="text-slate-500 dark:text-slate-400 mt-4 text-lg">
@@ -654,7 +660,7 @@
                     Tables Available for Tonight
                 </div>
 
-                <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tight dark:text-white leading-tight">
+                <h2 class="text-4xl md:text-6xl font-semibold font-black mb-6 tracking-tight dark:text-white leading-tight">
                     Ready to Start Your <br>
                     <span class="text-primary italic">Next Adventure?</span>
                 </h2>
