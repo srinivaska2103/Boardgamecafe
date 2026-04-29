@@ -38,7 +38,7 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
 
-   <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b dark:border-slate-800">
+  <nav class="fixed w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
         <a href="index.html">
@@ -51,10 +51,10 @@
             <line x1="10" x2="10" y1="2" y2="4"/>
             <line x1="14" x2="14" y1="2" y2="4"/>
         </svg>
-    </div>            <span class="text-xl md:text-2xl font-black tracking-tighter uppercase">Dice & Beans</span>
+    </div>            <span class="text-xl md:text-2xl font-black tracking-tighter uppercase dark:text-white">Dice & Beans</span>
         </div>
         </a>
-       
+        
 
         <div class="hidden xl:flex items-center space-x-4">
             <a href="index.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Home1</a>
@@ -80,23 +80,20 @@
 
             <div class="flex items-center gap-1 md:gap-2 border-l pl-2 md:pl-4 dark:border-slate-700">
                 <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-primary transition">
-                    <i data-lucide="moon" id="theme-icon" class="w-4 h-4 md:w-5 md:h-5"></i>
+                    <i data-lucide="moon" id="theme-icon" class="w-4 h-4 md:w-5 md:h-5 dark:text-white"></i>
                 </button>
-                <button id="dir-toggle" class="hidden sm:block p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold hover:ring-2 ring-primary transition">LTR</button>
+                <button id="dir-toggle" class="hidden sm:block p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold hover:ring-2 ring-primary transition dark:text-white">LTR</button>
             </div>
 
             <div class="relative hidden lg:block group">
                 <button class="flex items-center gap-2 p-1 pr-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                     <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-8 h-8 rounded-full" alt="User">
-                    <span class="font-bold text-sm">User</span>
-                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    <span class="font-bold text-sm dark:text-white">User</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 dark:text-white"></i>
                 </button>
                 
                 <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border dark:border-slate-700 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                    <a href="user.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">My Dashboard</a>
-                    <!-- <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Settings</a> -->
-                    <!-- <hr class="my-1 border-slate-100 dark:border-slate-700"> -->
-                    <!-- <a href="#" class="block px-4 py-2 text-red-500 hover:bg-red-50 transition">Logout</a> -->
+                    <a href="user.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition dark:text-white">My Dashboard</a>
                 </div>
             </div>
 
@@ -107,39 +104,14 @@
     </div>
 </div>
     
-    <!-- <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 flex flex-col gap-4">
-        <div class="space-y-2">
-            <a href="#" class="mobile-link block text-lg font-bold text-primary">Home1</a>
-            <a href="#" class="mobile-link block text-lg">Home2</a>
-            <a href="#" class="mobile-link block text-lg">Services</a>
-            <a href="#" class="mobile-link block text-lg">Gallery</a>
-            <a href="#" class="mobile-link block text-lg">About</a>
-            <a href="#" class="mobile-link block text-lg">Contact</a>
-        </div>
-
-        <hr class="dark:border-slate-800">
-
-        <div class="flex items-center gap-3 py-2">
-            <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
-            <div>
-                <p class="font-bold">User Name</p>
-                <a href="#" class="text-sm text-primary">View Dashboard</a>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-            <button class="border border-primary text-primary font-bold py-3 rounded-xl">Register</button>
-            <button class="bg-primary text-white font-bold py-3 rounded-xl">Book Now</button>
-        </div>
-    </div> -->
-    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 flex flex-col gap-4">
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-black border-b dark:border-slate-800 p-6 flex flex-col gap-4">
     <div class="space-y-2">
-        <a href="index.html" class="mobile-link block text-lg">Home1</a>
-        <a href="home2.html" class="mobile-link block text-lg">Home2</a>
+        <a href="index.html" class="mobile-link block text-lg dark:text-slate-300">Home1</a>
+        <a href="home2.html" class="mobile-link block text-lg dark:text-slate-300">Home2</a>
         <a href="about.html" class="mobile-link block text-lg font-bold text-primary">About</a>
-        <a href="gallery.html" class="mobile-link block text-lg">Gallery</a>
-        <a href="service.html" class="mobile-link block text-lg ">Service</a>
-        <a href="contact.html" class="mobile-link block text-lg">Contact</a>
+        <a href="gallery.html" class="mobile-link block text-lg dark:text-slate-300">Gallery</a>
+        <a href="service.html" class="mobile-link block text-lg dark:text-slate-300">Service</a>
+        <a href="contact.html" class="mobile-link block text-lg dark:text-slate-300">Contact</a>
     </div>
 
     <hr class="dark:border-slate-800">
@@ -148,12 +120,12 @@
         <div class="flex items-center gap-3">
             <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
             <div>
-                <p class="font-bold">User Name</p>
+                <p class="font-bold dark:text-white">User Name</p>
                 <a href="user.html" class="text-sm text-primary">View Dashboard</a>
             </div>
         </div>
         
-        <button id="mobile-dir-toggle" class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold border dark:border-slate-700 hover:ring-2 ring-primary transition">
+        <button id="mobile-dir-toggle" class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold border dark:border-slate-700 hover:ring-2 ring-primary transition dark:text-white">
             LTR
         </button>
     </div>
@@ -179,7 +151,7 @@
 </div>
 </div>
 </nav>
-<section id="our-story" class="relative pt-32 pb-20 px-6 overflow-hidden">
+<section id="our-story" class="relative pt-32 pb-20 px-6 overflow-hidden bg-white dark:bg-black transition-colors duration-500">
     <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10 animate-pulse"></div>
     
     <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -210,14 +182,8 @@
                 ⭐ 01. Our Story
             </div>
             
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold font-black leading-tight tracking-tight">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold font-black leading-tight tracking-tight dark:text-white">
                 From a Living Room <br>
-                <!-- <span class="text-primary relative inline-block">
-                    Dice & Beans
-                    <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 318 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 9C106 3.5 212 3.5 315 9" stroke="#f97316" stroke-width="5" stroke-linecap="round"/>
-                    </svg>
-                </span> -->
             </h2>
 
             <div class="space-y-4">
@@ -229,21 +195,10 @@
                     "What began as a dream to build a 'home away from home' became a reality in 2024. Today, we are proud to be the heart of the local gaming community."
                 </p>
             </div>
-
-            <!-- <div class="grid grid-cols-2 gap-6 pt-6">
-                <div class="group cursor-default">
-                    <p class="text-3xl font-black text-primary group-hover:scale-110 transition-transform origin-left">500+</p>
-                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Games in Library</p>
-                </div>
-                <div class="group cursor-default">
-                    <p class="text-3xl font-black text-primary group-hover:scale-110 transition-transform origin-left">10k+</p>
-                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Happy Gamers</p>
-                </div>
-            </div> -->
         </div>
     </div>
 </section>
-<section class="py-24 bg-slate-100 dark:bg-slate-900/50 overflow-hidden">
+<section class="py-24 bg-slate-100 dark:bg-black overflow-hidden transition-colors duration-500">
     <div class="max-w-7xl mx-auto px-6">
         
         <div class="text-center mb-16" data-aos="fade-up">
@@ -313,7 +268,7 @@
         </div>
     </div>
 </section>
-<section class="py-24 px-6 bg-white dark:bg-slate-900 transition-colors duration-300">
+<section class="py-24 px-6 bg-white dark:bg-black transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-20" data-aos="fade-up">
             <h2 class="text-4xl md:text-5xl font-semibold font-black uppercase tracking-tight dark:text-white">
@@ -391,7 +346,7 @@
         animation: shimmer 2s infinite;
     }
 </style>
-<section class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
+<section class="py-24 bg-white dark:bg-black transition-colors duration-300 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
         
         <div class="text-center mb-16" data-aos="fade-up">
@@ -456,7 +411,7 @@
 </div>
     </div>
 </section>
-<section id="gallery" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+<section id="gallery" class="py-24 bg-slate-50 dark:bg-black transition-colors duration-500 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
         
         <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8" data-aos="fade-up">
@@ -480,10 +435,10 @@
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-start">
             
-            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-black border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="100">
                 <img src="assets/ab3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Victory Moment">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-black/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
                     <div class="flex items-center gap-3">
                         <div class="p-2.5 bg-primary text-white rounded-xl shadow-lg shadow-orange-500/20">
                             <i data-lucide="trophy" class="w-4 h-4"></i>
@@ -496,10 +451,10 @@
                 </div>
             </div>
 
-            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-black border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="200">
                 <img src="assets/socialevents" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Teamwork">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-black/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
                     <div class="flex items-center gap-3">
                         <div class="p-2.5 bg-secondary text-white rounded-xl shadow-lg shadow-purple-500/20">
                             <i data-lucide="users" class="w-4 h-4"></i>
@@ -512,10 +467,10 @@
                 </div>
             </div>
 
-            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-black border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="300">
                 <img src="assets/board" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Coffee & Games">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-black/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
                     <div class="flex items-center gap-3">
                         <div class="p-2.5 bg-primary text-white rounded-xl shadow-lg shadow-orange-500/20">
                             <i data-lucide="coffee" class="w-4 h-4"></i>
@@ -528,10 +483,10 @@
                 </div>
             </div>
 
-            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="group relative h-[450px] rounded-[2.5rem] overflow-hidden shadow-lg bg-white dark:bg-black border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:-translate-y-4" data-aos="fade-up" data-aos-delay="400">
                 <img src="assets/weekend" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Weekend Vibes">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-black/90 backdrop-blur-md p-5 rounded-[1.8rem] border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
                     <div class="flex items-center gap-3">
                         <div class="p-2.5 bg-secondary text-white rounded-xl shadow-lg shadow-purple-500/20">
                             <i data-lucide="sparkles" class="w-4 h-4"></i>
@@ -547,7 +502,7 @@
         </div>
     </div>
 </section>
-<section id="game-collection" class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
+<section id="game-collection" class="py-24 bg-white dark:bg-black transition-colors duration-300 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
         
         <div class="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
@@ -574,55 +529,55 @@
 
        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto justify-center">
             
-    <div class="group bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] p-4 border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all duration-500 shadow-xl hover:shadow-2xl" data-aos="fade-up">
-        <div class="relative h-64 rounded-[2rem] overflow-hidden mb-6">
-            <img src="assets/ticket" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-            <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 rounded-full bg-green-500 text-white text-[10px] font-black uppercase tracking-tighter">Beginner Friendly</span>
-            </div>
-        </div>
-        <div class="px-4 pb-4">
-            <div class="flex justify-between items-start mb-2">
-                <h4 class="text-2xl font-black dark:text-white">Ticket to Ride</h4>
-                <span class="text-primary font-black">$Free*</span>
-            </div>
-            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">A cross-country train adventure where players collect cards of various types of train cars.</p>
-            
-            <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-700">
-                <div class="flex items-center gap-4 text-xs font-bold text-slate-400">
-                    <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4"></i> 2-5</span>
-                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 45m</span>
+        <div class="group bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] p-4 border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all duration-500 shadow-xl hover:shadow-2xl" data-aos="fade-up">
+            <div class="relative h-64 rounded-[2rem] overflow-hidden mb-6">
+                <img src="assets/ticket" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 rounded-full bg-green-500 text-white text-[10px] font-black uppercase tracking-tighter">Beginner Friendly</span>
                 </div>
-                <i data-lucide="arrow-right" class="text-primary w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all"></i>
             </div>
-        </div>
-    </div>
-
-    <div class="group bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] p-4 border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all duration-500 shadow-xl hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
-        <div class="relative h-64 rounded-[2rem] overflow-hidden mb-6">
-            <img src="assets/caten" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-            <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 rounded-full bg-blue-500 text-white text-[10px] font-black uppercase tracking-tighter">Intermediate</span>
-            </div>
-        </div>
-        <div class="px-4 pb-4">
-            <div class="flex justify-between items-start mb-2">
-                <h4 class="text-2xl font-black dark:text-white">Catan</h4>
-                <span class="text-primary font-black">$Free*</span>
-            </div>
-            <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Trade, build, and settle the Island of Catan in this legendary strategy masterpiece.</p>
-            
-            <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-700">
-                <div class="flex items-center gap-4 text-xs font-bold text-slate-400">
-                    <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4"></i> 3-4</span>
-                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 90m</span>
+            <div class="px-4 pb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-2xl font-black dark:text-white">Ticket to Ride</h4>
+                    <span class="text-primary font-black">$Free*</span>
                 </div>
-                <i data-lucide="arrow-right" class="text-primary w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all"></i>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">A cross-country train adventure where players collect cards of various types of train cars.</p>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-700">
+                    <div class="flex items-center gap-4 text-xs font-bold text-slate-400">
+                        <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4"></i> 2-5</span>
+                        <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 45m</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="text-primary w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all"></i>
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
+        <div class="group bg-slate-50 dark:bg-slate-800/50 rounded-[2.5rem] p-4 border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all duration-500 shadow-xl hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="relative h-64 rounded-[2rem] overflow-hidden mb-6">
+                <img src="assets/caten" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 rounded-full bg-blue-500 text-white text-[10px] font-black uppercase tracking-tighter">Intermediate</span>
+                </div>
+            </div>
+            <div class="px-4 pb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-2xl font-black dark:text-white">Catan</h4>
+                    <span class="text-primary font-black">$Free*</span>
+                </div>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Trade, build, and settle the Island of Catan in this legendary strategy masterpiece.</p>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-700">
+                    <div class="flex items-center gap-4 text-xs font-bold text-slate-400">
+                        <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4"></i> 3-4</span>
+                        <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 90m</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="text-primary w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
         <div class="mt-16 text-center">
             <p class="text-slate-500 dark:text-slate-400 font-medium">
@@ -637,7 +592,7 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
-<section id="book-now" class="py-24 px-4 bg-white dark:bg-slate-900 transition-colors duration-300">
+<section id="book-now" class="py-24 px-4 bg-white dark:bg-black transition-colors duration-300">
     <div class="max-w-6xl mx-auto relative group">
         
         <div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>

@@ -21,13 +21,13 @@
         .animate-wobble { animation: wobble 3s ease-in-out infinite; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 h-screen overflow-hidden flex flex-col">
+<body class="bg-slate-50 text-slate-900 dark:bg-black dark:text-slate-100 transition-colors duration-300 h-screen overflow-hidden flex flex-col">
 
     <nav class="p-6 flex justify-end gap-4 shrink-0 relative z-10">
-        <button id="theme-toggle" class="p-3 rounded-2xl bg-white dark:bg-slate-800 shadow-lg border dark:border-slate-700 hover:ring-2 ring-primary transition-all">
+        <button id="theme-toggle" class="p-3 rounded-2xl bg-white dark:bg-black shadow-lg border dark:border-slate-700 hover:ring-2 ring-primary transition-all">
             <i data-lucide="moon" id="theme-icon" class="w-5 h-5"></i>
         </button>
-        <button id="dir-toggle" class="p-3 rounded-2xl bg-white dark:bg-slate-800 shadow-lg border dark:border-slate-700 font-bold text-xs hover:ring-2 ring-primary transition-all">
+        <button id="dir-toggle" class="p-3 rounded-2xl bg-white dark:bg-black shadow-lg border dark:border-slate-700 font-bold text-xs hover:ring-2 ring-primary transition-all">
             LTR
         </button>
     </nav>
@@ -55,7 +55,7 @@
                 <a href="index.html" class="w-full sm:w-auto bg-primary text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-orange-600 transition-all shadow-xl shadow-orange-500/20 active:scale-95 flex items-center justify-center gap-2">
                     <i data-lucide="home" class="w-5 h-5"></i> Back to Home
                 </a>
-                <button onclick="window.history.back()" class="w-full sm:w-auto bg-slate-200 dark:bg-slate-800 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition-all active:scale-95">
+                <button onclick="window.history.back()" class="w-full sm:w-auto bg-slate-200 dark:bg-zinc-900 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-300 dark:hover:bg-zinc-800 transition-all active:scale-95">
                     Go Back
                 </button>
             </div>

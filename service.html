@@ -38,7 +38,7 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
 
-   <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b dark:border-slate-800">
+  <nav class="fixed w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
          <a href="index.html">
@@ -51,9 +51,10 @@
             <line x1="10" x2="10" y1="2" y2="4"/>
             <line x1="14" x2="14" y1="2" y2="4"/>
         </svg>
-    </div>            <span class="text-xl md:text-2xl font-black tracking-tighter uppercase">Dice & Beans</span>
+    </div>            <span class="text-xl md:text-2xl font-black tracking-tighter uppercase dark:text-white">Dice & Beans</span>
         </div>
         </a>
+        
 
         <div class="hidden xl:flex items-center space-x-4">
             <a href="index.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Home1</a>
@@ -79,23 +80,20 @@
 
             <div class="flex items-center gap-1 md:gap-2 border-l pl-2 md:pl-4 dark:border-slate-700">
                 <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-primary transition">
-                    <i data-lucide="moon" id="theme-icon" class="w-4 h-4 md:w-5 md:h-5"></i>
+                    <i data-lucide="moon" id="theme-icon" class="w-4 h-4 md:w-5 md:h-5 dark:text-white"></i>
                 </button>
-                <button id="dir-toggle" class="hidden sm:block p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold hover:ring-2 ring-primary transition">LTR</button>
+                <button id="dir-toggle" class="hidden sm:block p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold hover:ring-2 ring-primary transition dark:text-white">LTR</button>
             </div>
 
             <div class="relative hidden lg:block group">
                 <button class="flex items-center gap-2 p-1 pr-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                     <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-8 h-8 rounded-full" alt="User">
-                    <span class="font-bold text-sm">User</span>
-                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    <span class="font-bold text-sm dark:text-white">User</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 dark:text-white"></i>
                 </button>
                 
                 <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border dark:border-slate-700 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                    <a href="user.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">My Dashboard</a>
-                    <!-- <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Settings</a> -->
-                    <!-- <hr class="my-1 border-slate-100 dark:border-slate-700"> -->
-                    <!-- <a href="#" class="block px-4 py-2 text-red-500 hover:bg-red-50 transition">Logout</a> -->
+                    <a href="user.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition dark:text-white">My Dashboard</a>
                 </div>
             </div>
 
@@ -106,39 +104,14 @@
     </div>
 </div>
     
-    <!-- <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 flex flex-col gap-4">
-        <div class="space-y-2">
-            <a href="#" class="mobile-link block text-lg font-bold text-primary">Home1</a>
-            <a href="#" class="mobile-link block text-lg">Home2</a>
-            <a href="#" class="mobile-link block text-lg">Services</a>
-            <a href="#" class="mobile-link block text-lg">Gallery</a>
-            <a href="#" class="mobile-link block text-lg">About</a>
-            <a href="#" class="mobile-link block text-lg">Contact</a>
-        </div>
-
-        <hr class="dark:border-slate-800">
-
-        <div class="flex items-center gap-3 py-2">
-            <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
-            <div>
-                <p class="font-bold">User Name</p>
-                <a href="#" class="text-sm text-primary">View Dashboard</a>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-            <button class="border border-primary text-primary font-bold py-3 rounded-xl">Register</button>
-            <button class="bg-primary text-white font-bold py-3 rounded-xl">Book Now</button>
-        </div>
-    </div> -->
-    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 flex flex-col gap-4">
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-black border-b dark:border-slate-800 p-6 flex flex-col gap-4">
     <div class="space-y-2">
-        <a href="index.html" class="mobile-link block text-lg">Home1</a>
-        <a href="home2.html" class="mobile-link block text-lg">Home2</a>
-        <a href="about.html" class="mobile-link block text-lg ">About</a>
-        <a href="gallery.html" class="mobile-link block text-lg">Gallery</a>
+        <a href="index.html" class="mobile-link block text-lg dark:text-slate-300">Home1</a>
+        <a href="home2.html" class="mobile-link block text-lg dark:text-slate-300">Home2</a>
+        <a href="about.html" class="mobile-link block text-lg dark:text-slate-300">About</a>
+        <a href="gallery.html" class="mobile-link block text-lg dark:text-slate-300">Gallery</a>
         <a href="service.html" class="mobile-link block text-lg font-bold text-primary">Service</a>
-        <a href="contact.html" class="mobile-link block text-lg">Contact</a>
+        <a href="contact.html" class="mobile-link block text-lg dark:text-slate-300">Contact</a>
     </div>
 
     <hr class="dark:border-slate-800">
@@ -147,12 +120,12 @@
         <div class="flex items-center gap-3">
             <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
             <div>
-                <p class="font-bold">User Name</p>
+                <p class="font-bold dark:text-white">User Name</p>
                 <a href="user.html" class="text-sm text-primary">View Dashboard</a>
             </div>
         </div>
         
-        <button id="mobile-dir-toggle" class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold border dark:border-slate-700 hover:ring-2 ring-primary transition">
+        <button id="mobile-dir-toggle" class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold border dark:border-slate-700 hover:ring-2 ring-primary transition dark:text-white">
             LTR
         </button>
     </div>
@@ -178,7 +151,7 @@
 </div>
 </div>
 </nav>
-<header class="relative min-h-[90vh] flex items-center pt-24 pb-16 px-6 overflow-hidden bg-white dark:bg-slate-900 transition-colors duration-500">
+<header class="relative min-h-[90vh] flex items-center pt-24 pb-16 px-6 overflow-hidden bg-white dark:bg-black transition-colors duration-500">
     
     <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 -z-10 hidden lg:block"></div>
     <div class="absolute top-1/4 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
@@ -208,15 +181,14 @@
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 pt-4">
-               <a href="book.html">
- <button class="group relative px-8 py-5 bg-primary text-white font-black text-xl rounded-2xl shadow-2xl shadow-orange-500/30 hover:scale-105 active:scale-95 transition-all overflow-hidden">
-                    <span class="relative z-10 flex items-center gap-3">
-                        Book a Table <i data-lucide="calendar-days" class="w-6 h-6"></i>
-                    </span>
-                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                </button>
-               </a>
-               
+                <a href="book.html">
+                    <button class="group relative px-8 py-5 bg-primary text-white font-black text-xl rounded-2xl shadow-2xl shadow-orange-500/30 hover:scale-105 active:scale-95 transition-all overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-3">
+                            Book a Table <i data-lucide="calendar-days" class="w-6 h-6"></i>
+                        </span>
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </button>
+                </a>
                 
                 <button class="px-8 py-5 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 font-black text-xl rounded-2xl hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-3 dark:text-white">
                     Explore Games <i data-lucide="dices" class="w-6 h-6"></i>
@@ -243,7 +215,7 @@
                      alt="Board Game Cafe" 
                      class="w-full h-[500px] md:h-[650px] object-cover transition-transform duration-[3000ms] group-hover:scale-110">
                 
-                <div class="absolute bottom-8 left-8 right-8 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-6 rounded-3xl shadow-2xl translate-y-20 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 border border-white/20">
+                <div class="absolute bottom-8 left-8 right-8 bg-white/90 dark:bg-black/90 backdrop-blur-xl p-6 rounded-3xl shadow-2xl translate-y-20 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 border border-white/20">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-white">
@@ -258,15 +230,11 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="absolute -top-10 -right-10 w-32 h-32 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl flex items-center justify-center animate-bounce duration-[4000ms] hidden md:flex">
-                <i data-lucide="dice-5" class="w-16 h-16 text-primary"></i>
-            </div> -->
         </div>
     </div>
 </header>
 
-<section id="services-grid" class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+<section id="services-grid" class="py-24 bg-white dark:bg-black transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-6">
         
         <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
@@ -305,48 +273,49 @@
                 <p class="opacity-90 text-sm mb-6 leading-relaxed">Don't spend an hour reading a manual. Our staff will teach you any game in our library in minutes.</p>
                 <button class="bg-white text-primary px-6 py-2 rounded-xl font-black text-xs hover:scale-105 transition-transform">Request Expert</button>
             </div>
+
             <div class="group p-10 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-orange-500/10" data-aos="fade-up" data-aos-delay="100">
-    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform">
-        <i data-lucide="trophy" class="text-primary w-8 h-8"></i>
-    </div>
-    <h3 class="text-2xl font-black mb-4 dark:text-white">Weekly Tournaments</h3>
-    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Rise through the ranks in our scheduled league nights. From Catan qualifiers to intensive Chess masters showdowns.</p>
-    <ul class="space-y-2 mb-8 text-xs font-bold text-slate-400 uppercase tracking-widest">
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Seasonal Rankings</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Exclusive Prizes</li>
-    </ul>
-    <button class="text-primary font-black flex items-center gap-2 group-hover:gap-4 transition-all">View Schedule <i data-lucide="chevron-right"></i></button>
-</div>
-<div class="group p-10 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-orange-500/10" data-aos="fade-up" data-aos-delay="200">
-    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform">
-        <i data-lucide="party-popper" class="text-primary w-8 h-8"></i>
-    </div>
-    <h3 class="text-2xl font-black mb-4 dark:text-white">Private Gatherings</h3>
-    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Host your next birthday or team-building event in our themed private rooms with dedicated Game Master service.</p>
-    <ul class="space-y-2 mb-8 text-xs font-bold text-slate-400 uppercase tracking-widest">
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Custom Catering</li>
-        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Priority Booking</li>
-    </ul>
-    <button class="text-primary font-black flex items-center gap-2 group-hover:gap-4 transition-all">Plan Event <i data-lucide="chevron-right"></i></button>
-</div>
+                <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform">
+                    <i data-lucide="trophy" class="text-primary w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-black mb-4 dark:text-white">Weekly Tournaments</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Rise through the ranks in our scheduled league nights. From Catan qualifiers to intensive Chess masters showdowns.</p>
+                <ul class="space-y-2 mb-8 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Seasonal Rankings</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Exclusive Prizes</li>
+                </ul>
+                <button class="text-primary font-black flex items-center gap-2 group-hover:gap-4 transition-all">View Schedule <i data-lucide="chevron-right"></i></button>
+            </div>
+
+            <div class="group p-10 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-orange-500/10" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform">
+                    <i data-lucide="party-popper" class="text-primary w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-black mb-4 dark:text-white">Private Gatherings</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">Host your next birthday or team-building event in our themed private rooms with dedicated Game Master service.</p>
+                <ul class="space-y-2 mb-8 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Custom Catering</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Priority Booking</li>
+                </ul>
+                <button class="text-primary font-black flex items-center gap-2 group-hover:gap-4 transition-all">Plan Event <i data-lucide="chevron-right"></i></button>
+            </div>
+
             <div class="group p-10 rounded-[2.5rem] bg-slate-900 text-white shadow-2xl shadow-slate-900/20" data-aos="fade-up" data-aos-delay="300">
-    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-12 transition-transform">
-        <i data-lucide="utensils" class="text-white w-8 h-8"></i>
-    </div>
-
-    <h3 class="text-2xl font-black mb-4 uppercase tracking-tight">Table-Side Dining</h3>
-    <p class="opacity-80 text-sm mb-6 leading-relaxed">
-        Fuel your strategy sessions with artisan coffee, signature snacks, and shared platters served directly to your gaming table.
-    </p>
-
-    <button class="bg-primary text-white px-8 py-3 rounded-2xl font-black text-xs hover:bg-orange-600 hover:scale-105 active:scale-95 transition-all shadow-lg shadow-orange-500/30">
-        Browse Menu
-    </button>
-</div>
+                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-12 transition-transform">
+                    <i data-lucide="utensils" class="text-white w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-black mb-4 uppercase tracking-tight">Table-Side Dining</h3>
+                <p class="opacity-80 text-sm mb-6 leading-relaxed">
+                    Fuel your strategy sessions with artisan coffee, signature snacks, and shared platters served directly to your gaming table.
+                </p>
+                <button class="bg-primary text-white px-8 py-3 rounded-2xl font-black text-xs hover:bg-orange-600 hover:scale-105 active:scale-95 transition-all shadow-lg shadow-orange-500/30">
+                    Browse Menu
+                </button>
+            </div>
         </div>
     </div>
 </section>
-<section id="service-images" class="py-24 bg-white dark:bg-slate-900 transition-colors duration-500 overflow-hidden">
+<section id="service-images" class="py-24 bg-white dark:bg-black transition-colors duration-500 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
         
         <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8" data-aos="fade-up">
@@ -417,7 +386,7 @@
         </div>
     </div>
 </section>
-<section id="pricing" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+<section id="pricing" class="py-24 bg-slate-50 dark:bg-black transition-colors duration-500 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
         
         <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
@@ -432,7 +401,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
             
-            <div class="group relative p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="group relative p-8 rounded-[2.5rem] bg-white dark:bg-black border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="100">
                 <div class="mb-8">
                     <h4 class="text-xl font-black uppercase tracking-widest text-slate-400 mb-4">The Newbie</h4>
                     <div class="flex items-baseline gap-1">
@@ -456,7 +425,7 @@
                 </button>
             </div>
 
-            <div class="group relative p-10 rounded-[3rem] bg-white dark:bg-slate-900 border-4 border-primary shadow-2xl scale-105 z-10 overflow-hidden" data-aos="fade-up">
+            <div class="group relative p-10 rounded-[3rem] bg-white dark:bg-black border-4 border-primary shadow-2xl scale-105 z-10 overflow-hidden" data-aos="fade-up">
                 <div class="absolute top-8 -right-12 bg-primary text-white px-12 py-1 rotate-45 text-[10px] font-black uppercase tracking-widest shadow-lg">
                     Best Value
                 </div>
@@ -484,7 +453,7 @@
                 </button>
             </div>
 
-            <div class="group relative p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+            <div class="group relative p-8 rounded-[2.5rem] bg-white dark:bg-black border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="200">
                 <div class="mb-8">
                     <h4 class="text-xl font-black uppercase tracking-widest text-slate-400 mb-4">The Legend</h4>
                     <div class="flex items-baseline gap-1">
@@ -511,12 +480,12 @@
         </div>
     </div>
 </section>
-<section id="cta-footer" class="py-24 px-6 bg-white dark:bg-slate-950">
+<section id="cta-footer" class="py-24 px-6 bg-white dark:bg-black">
     <div class="max-w-6xl mx-auto relative group">
         
         <div class="absolute -inset-1 bg-gradient-to-r from-primary to-orange-400 rounded-[3.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
         
-        <div class="relative bg-slate-900 dark:bg-slate-900 rounded-[3rem] p-12 md:p-20 overflow-hidden text-center">
+        <div class="relative bg-slate-900 dark:bg-black rounded-[3rem] p-12 md:p-20 overflow-hidden text-center border dark:border-slate-800">
             
             <div class="absolute top-10 left-10 opacity-10 -rotate-12 animate-bounce duration-[4000ms]">
                 <i data-lucide="dice-5" class="w-32 h-32 text-white"></i>

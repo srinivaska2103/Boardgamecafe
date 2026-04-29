@@ -40,147 +40,112 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
 
-    <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b dark:border-slate-800">
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-20 items-center">
-        <a href="index.html">
- <div class="flex items-center gap-2 shrink-0 cursor-pointer group">
-<div class="shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-12 transition-transform">
-            <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
-            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
-            <line x1="6" x2="6" y1="2" y2="4"/>
-            <line x1="10" x2="10" y1="2" y2="4"/>
-            <line x1="14" x2="14" y1="2" y2="4"/>
-        </svg>
-    </div>            <span class="text-xl md:text-2xl font-black tracking-tighter uppercase">Dice & Beans</span>
-        </div>
-        </a>
-
-        <div class="hidden xl:flex items-center space-x-4">
-            <a href="index.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Home1</a>
-            <a href="home2.html" class="desktop-link active px-2 py-1 text-primary font-bold border-b-2 border-primary transition-all">Home2</a>
-            <a href="about.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">About</a>
-            <a href="gallery.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Gallery</a>
-            <a href="service.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Service</a>
-            <a href="contact.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Contact</a>
-        </div>
-
-        <div class="flex items-center gap-2 md:gap-4">
-            
-            <div class="hidden md:flex items-center gap-2">
-                <a href="login.html">
-                                    <button class="text-primary border border-primary px-4 py-2 rounded-full font-bold hover:bg-primary hover:text-white transition">Register</button>
-
-                </a>
-                <a href="book.html">
-                <button class="bg-primary text-white px-4 py-2 rounded-full font-bold hover:bg-orange-600 transition shadow-lg shadow-orange-500/20">Book Now</button>
-
-                </a>
-            </div>
-
-            <div class="flex items-center gap-1 md:gap-2 border-l pl-2 md:pl-4 dark:border-slate-700">
-                <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-primary transition">
-                    <i data-lucide="moon" id="theme-icon" class="w-4 h-4 md:w-5 md:h-5"></i>
-                </button>
-                <button id="dir-toggle" class="hidden sm:block p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold hover:ring-2 ring-primary transition">LTR</button>
-            </div>
-
-            <div class="relative hidden lg:block group">
-                <button class="flex items-center gap-2 p-1 pr-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-                    <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-8 h-8 rounded-full" alt="User">
-                    <span class="font-bold text-sm">User</span>
-                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                </button>
-                
-                <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border dark:border-slate-700 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                    <a href="user.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">My Dashboard</a>
-                    <!-- <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Settings</a> -->
-                    <!-- <hr class="my-1 border-slate-100 dark:border-slate-700"> -->
-                    <!-- <a href="#" class="block px-4 py-2 text-red-500 hover:bg-red-50 transition">Logout</a> -->
+        <div class="flex justify-between h-20 items-center">
+            <a href="index.html">
+                <div class="flex items-center gap-2 shrink-0 cursor-pointer group">
+                    <div class="shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-12 transition-transform">
+                            <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+                            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
+                            <line x1="6" x2="6" y1="2" y2="4"/>
+                            <line x1="10" x2="10" y1="2" y2="4"/>
+                            <line x1="14" x2="14" y1="2" y2="4"/>
+                        </svg>
+                    </div> 
+                    <span class="text-xl md:text-2xl font-black tracking-tighter uppercase dark:text-white">Dice & Beans</span>
                 </div>
+            </a>
+
+            <div class="hidden xl:flex items-center space-x-4">
+                <a href="index.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Home1</a>
+                <a href="home2.html" class="desktop-link active px-2 py-1 text-primary font-bold border-b-2 border-primary transition-all">Home2</a>
+                <a href="about.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">About</a>
+                <a href="gallery.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Gallery</a>
+                <a href="service.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Service</a>
+                <a href="contact.html" class="desktop-link px-2 py-1 text-slate-600 dark:text-slate-300 hover:text-primary transition-all">Contact</a>
             </div>
 
-            <button id="mobile-menu-btn" class="xl:hidden p-2 text-slate-600 dark:text-slate-300">
-                <i data-lucide="menu" class="w-7 h-7"></i>
-            </button>
+            <div class="flex items-center gap-2 md:gap-4">
+                <div class="hidden md:flex items-center gap-2">
+                    <a href="login.html">
+                        <button class="text-primary border border-primary px-4 py-2 rounded-full font-bold hover:bg-primary hover:text-white transition">Register</button>
+                    </a>
+                    <a href="book.html">
+                        <button class="bg-primary text-white px-4 py-2 rounded-full font-bold hover:bg-orange-600 transition shadow-lg shadow-orange-500/20">Book Now</button>
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-1 md:gap-2 border-l pl-2 md:pl-4 dark:border-slate-700">
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-primary transition">
+                        <i data-lucide="moon" id="theme-icon" class="w-4 h-4 md:w-5 md:h-5 dark:text-white"></i>
+                    </button>
+                    <button id="dir-toggle" class="hidden sm:block p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold hover:ring-2 ring-primary transition dark:text-white">LTR</button>
+                </div>
+
+                <div class="relative hidden lg:block group">
+                    <button class="flex items-center gap-2 p-1 pr-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-8 h-8 rounded-full" alt="User">
+                        <span class="font-bold text-sm dark:text-white">User</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 dark:text-white"></i>
+                    </button>
+                    
+                    <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border dark:border-slate-700 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                        <a href="user.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition dark:text-white">My Dashboard</a>
+                    </div>
+                </div>
+
+                <button id="mobile-menu-btn" class="xl:hidden p-2 text-slate-600 dark:text-slate-300">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
         </div>
     </div>
-</div>
     
-    <!-- <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 flex flex-col gap-4">
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-black border-b dark:border-slate-800 p-6 flex flex-col gap-4">
         <div class="space-y-2">
-            <a href="#" class="mobile-link block text-lg font-bold text-primary">Home1</a>
-            <a href="#" class="mobile-link block text-lg">Home2</a>
-            <a href="#" class="mobile-link block text-lg">Services</a>
-            <a href="#" class="mobile-link block text-lg">Gallery</a>
-            <a href="#" class="mobile-link block text-lg">About</a>
-            <a href="#" class="mobile-link block text-lg">Contact</a>
+            <a href="index.html" class="mobile-link block text-lg font-bold text-primary">Home1</a>
+            <a href="home2.html" class="mobile-link block text-lg dark:text-white">Home2</a>
+            <a href="about.html" class="mobile-link block text-lg dark:text-white">About</a>
+            <a href="gallery.html" class="mobile-link block text-lg dark:text-white">Gallery</a>
+            <a href="service.html" class="mobile-link block text-lg dark:text-white">Service</a>
+            <a href="contact.html" class="mobile-link block text-lg dark:text-white">Contact</a>
         </div>
 
         <hr class="dark:border-slate-800">
 
-        <div class="flex items-center gap-3 py-2">
-            <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
-            <div>
-                <p class="font-bold">User Name</p>
-                <a href="#" class="text-sm text-primary">View Dashboard</a>
+        <div class="flex items-center justify-between py-2">
+            <div class="flex items-center gap-3">
+                <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
+                <div>
+                    <p class="font-bold dark:text-white">User Name</p>
+                    <a href="user.html" class="text-sm text-primary">View Dashboard</a>
+                </div>
             </div>
+            
+            <button id="mobile-dir-toggle" class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold border dark:border-slate-700 hover:ring-2 ring-primary transition dark:text-white">
+                LTR
+            </button>
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
-            <button class="border border-primary text-primary font-bold py-3 rounded-xl">Register</button>
-            <button class="bg-primary text-white font-bold py-3 rounded-xl">Book Now</button>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-md mx-auto px-4">
+            <a href="login.html" class="w-full block group">
+                <button class="w-full border-2 border-primary text-primary font-black py-4 rounded-2xl hover:bg-primary/5 active:scale-95 transition-all duration-200 text-sm md:text-base uppercase tracking-widest shadow-sm">
+                    Register
+                </button>
+            </a>
+
+            <a href="book.html" class="w-full block group">
+                <button class="w-full bg-primary text-white font-black py-4 rounded-2xl shadow-lg shadow-orange-500/30 hover:bg-orange-600 hover:shadow-orange-500/40 active:scale-95 transition-all duration-200 text-sm md:text-base uppercase tracking-widest flex items-center justify-center gap-2">
+                    Book Now
+                    <i data-lucide="calendar-check" class="w-4 h-4 md:w-5 h-5"></i>
+                </button>
+            </a>
         </div>
-    </div> -->
-    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 flex flex-col gap-4">
-    <div class="space-y-2">
-        <a href="index.html" class="mobile-link block text-lg font-bold text-primary">Home1</a>
-        <a href="home2.html" class="mobile-link block text-lg">Home2</a>
-        <a href="about.html" class="mobile-link block text-lg">About</a>
-        <a href="gallery.html" class="mobile-link block text-lg">Gallery</a>
-        <a href="service.html" class="mobile-link block text-lg">Service</a>
-        <a href="contact.html" class="mobile-link block text-lg">Contact</a>
     </div>
-
-    <hr class="dark:border-slate-800">
-
-    <div class="flex items-center justify-between py-2">
-        <div class="flex items-center gap-3">
-            <img src="https://ui-avatars.com/api/?name=User&background=f97316&color=fff" class="w-10 h-10 rounded-full">
-            <div>
-                <p class="font-bold">User Name</p>
-                <a href="user.html" class="text-sm text-primary">View Dashboard</a>
-            </div>
-        </div>
-        
-        <button id="mobile-dir-toggle" class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold border dark:border-slate-700 hover:ring-2 ring-primary transition">
-            LTR
-        </button>
-    </div>
-
-   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-md mx-auto px-4">
-    <a href="login.html" class="w-full block group">
-        <button class="w-full border-2 border-primary text-primary font-black py-4 rounded-2xl 
-                       hover:bg-primary/5 active:scale-95 transition-all duration-200 
-                       text-sm md:text-base uppercase tracking-widest shadow-sm">
-            Register
-        </button>
-    </a>
-
-    <a href="book.html" class="w-full block group">
-        <button class="w-full bg-primary text-white font-black py-4 rounded-2xl 
-                       shadow-lg shadow-orange-500/30 hover:bg-orange-600 
-                       hover:shadow-orange-500/40 active:scale-95 transition-all duration-200 
-                       text-sm md:text-base uppercase tracking-widest flex items-center justify-center gap-2">
-            Book Now
-            <i data-lucide="calendar-check" class="w-4 h-4 md:w-5 h-5"></i>
-        </button>
-    </a>
-</div>
-</div>
 </nav>
-<header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden min-h-screen flex items-center bg-white dark:bg-slate-950 transition-colors duration-500">
+<header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden min-h-screen flex items-center bg-white dark:bg-black transition-colors duration-500">
     <div class="absolute top-40 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse"></div>
     
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
@@ -198,16 +163,15 @@
             
             <div class="flex flex-wrap justify-center lg:justify-start gap-4">
                <a href="book.html">
- <button class="bg-primary text-white px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-orange-500/40 hover:scale-105 active:scale-95 transition-all">
-                    Start Playing
-                </button>
+                    <button class="bg-primary text-white px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-orange-500/40 hover:scale-105 active:scale-95 transition-all">
+                        Start Playing
+                    </button>
                </a>
                <a href="comingsoon.html">
-                <button class="bg-slate-100 dark:bg-slate-800 px-10 py-5 rounded-2xl font-black text-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-all dark:text-white">
-                    Read Insights
-                </button>
-            </a>
-               
+                    <button class="bg-slate-100 dark:bg-slate-800 px-10 py-5 rounded-2xl font-black text-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-all dark:text-white">
+                        Read Insights
+                    </button>
+               </a>
             </div>
         </div>
 
@@ -220,21 +184,19 @@
     </div>
 </header>
 
-    <section id="strategy" class="py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors">
+    <section id="strategy" class="py-24 bg-slate-50 dark:bg-black transition-colors">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-                <h2 class="text-4xl md:text-6xl font-semibold font-black uppercase tracking-tighter">The Growth <span class="text-primary">Engine</span></h2>
+                <h2 class="text-4xl md:text-6xl font-semibold font-black uppercase tracking-tighter dark:text-white">The Growth <span class="text-primary">Engine</span></h2>
                 <p class="text-slate-500 mt-4 text-lg">We apply Business Intelligence to the art of the board game.</p>
             </div>
-
-            
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-grid">
                 <div class="p-10 rounded-[2.5rem] bg-white dark:bg-slate-800 shadow-xl border border-transparent hover:border-primary transition-all duration-500 group" data-aos="fade-up">
                     <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-12 transition-transform">
                         <i data-lucide="search-code" class="text-primary w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-black mb-4 uppercase">Local SEO</h3>
+                    <h3 class="text-2xl font-black mb-4 uppercase dark:text-white">Local SEO</h3>
                     <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Dominating local search logic to ensure every gamer finds their way to our table.</p>
                 </div>
 
@@ -242,7 +204,7 @@
                     <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:-rotate-12 transition-transform">
                         <i data-lucide="bar-chart-3" class="text-secondary w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-black mb-4 uppercase">Data Play</h3>
+                    <h3 class="text-2xl font-black mb-4 uppercase dark:text-white">Data Play</h3>
                     <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Tracking engagement metrics like experience points to optimize our community growth.</p>
                 </div>
 
@@ -257,7 +219,7 @@
         </div>
     </section>
 
-    <section id="leaderboard" class="py-24 bg-slate-900 text-white">
+   <section id="leaderboard" class="py-24 bg-slate-900 dark:bg-black text-white transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
             <div data-aos="fade-right">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-black uppercase tracking-widest mb-6 border border-primary/30">
@@ -284,7 +246,7 @@
             </div>
         </div>
     </section>
-<section id="pricing" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+<section id="pricing" class="py-24 bg-slate-50 dark:bg-black transition-colors duration-500 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
         
         <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
@@ -299,7 +261,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
             
-            <div class="group relative p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="group relative p-8 rounded-[2.5rem] bg-white dark:bg-black border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="100">
                 <div class="mb-8">
                     <h4 class="text-xl font-black uppercase tracking-widest text-slate-400 mb-4">The Newbie</h4>
                     <div class="flex items-baseline gap-1">
@@ -323,7 +285,7 @@
                 </button>
             </div>
 
-            <div class="group relative p-10 rounded-[3rem] bg-white dark:bg-slate-900 border-4 border-primary shadow-2xl scale-105 z-10 overflow-hidden" data-aos="fade-up">
+            <div class="group relative p-10 rounded-[3rem] bg-white dark:bg-black border-4 border-primary shadow-2xl scale-105 z-10 overflow-hidden" data-aos="fade-up">
                 <div class="absolute top-8 -right-12 bg-primary text-white px-12 py-1 rotate-45 text-[10px] font-black uppercase tracking-widest shadow-lg">
                     Best Value
                 </div>
@@ -351,7 +313,7 @@
                 </button>
             </div>
 
-            <div class="group relative p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+            <div class="group relative p-8 rounded-[2.5rem] bg-white dark:bg-black border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="200">
                 <div class="mb-8">
                     <h4 class="text-xl font-black uppercase tracking-widest text-slate-400 mb-4">The Legend</h4>
                     <div class="flex items-baseline gap-1">
@@ -379,7 +341,7 @@
     </div>
 </section>
 
-   <section id="testimonials" class="py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-300 overflow-hidden">
+  <section id="testimonials" class="py-24 bg-slate-50 dark:bg-black transition-colors duration-300 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
@@ -387,7 +349,7 @@
                 <i data-lucide="quote" class="w-4 h-4"></i>
                 Community Voices
             </div>
-            <h2 class="text-4xl md:text-5xl font-semibold font-black mb-6 tracking-tight">
+            <h2 class="text-4xl md:text-5xl font-semibold font-black mb-6 tracking-tight dark:text-white">
                 What Our <span class="text-primary">Players</span> Say
             </h2>
             <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
@@ -397,63 +359,63 @@
 
         <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center justify-center">
             
-    <div class="group p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10" data-aos="fade-right" data-aos-delay="100">
-        <div class="flex gap-1 mb-6">
-            <i data-lucide="star" class="w-5 h-5 fill-primary text-primary"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-primary text-primary"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-primary text-primary"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-primary text-primary"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-primary text-primary"></i>
-        </div>
-        <p class="text-slate-600 dark:text-slate-300 text-lg italic leading-relaxed mb-8 relative">
-            <span class="text-6xl text-primary/10 absolute -top-8 -left-4 font-serif">“</span>
-            Amazing atmosphere and fantastic game collection! The staff helped us learn a complex strategy game in minutes.
-        </p>
-        <div class="flex items-center gap-4">
-            <img src="https://i.pravatar.cc/100?u=sarah" class="w-12 h-12 rounded-full ring-2 ring-primary/20 group-hover:ring-primary transition-all" alt="Sarah J.">
-            <div>
-                <h4 class="font-bold dark:text-white">Sarah Jenkins</h4>
-                <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Competitive Strategist</p>
+            <div class="group p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10" data-aos="fade-right" data-aos-delay="100">
+                <div class="flex gap-1 mb-6">
+                    <i data-lucide="star" class="w-5 h-5 fill-primary text-primary"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-primary text-primary"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-primary text-primary"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-primary text-primary"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-primary text-primary"></i>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 text-lg italic leading-relaxed mb-8 relative">
+                    <span class="text-6xl text-primary/10 absolute -top-8 -left-4 font-serif">“</span>
+                    Amazing atmosphere and fantastic game collection! The staff helped us learn a complex strategy game in minutes.
+                </p>
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/100?u=sarah" class="w-12 h-12 rounded-full ring-2 ring-primary/20 group-hover:ring-primary transition-all" alt="Sarah J.">
+                    <div>
+                        <h4 class="font-bold dark:text-white">Sarah Jenkins</h4>
+                        <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Competitive Strategist</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="group p-8 rounded-[2.5rem] bg-primary text-white shadow-xl shadow-orange-500/20 transition-all duration-500 hover:scale-105" data-aos="fade-left" data-aos-delay="200">
-        <div class="flex gap-1 mb-6">
-            <i data-lucide="star" class="w-5 h-5 fill-white text-white"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-white text-white"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-white text-white"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-white text-white"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-white text-white"></i>
-        </div>
-        <p class="text-white/90 text-lg italic leading-relaxed mb-8 relative">
-            <span class="text-6xl text-white/20 absolute -top-8 -left-4 font-serif">“</span>
-            Perfect place to spend quality time with friends. The coffee is world-class and the vibe is unmatched in the city.
-        </p>
-        <div class="flex items-center gap-4">
-            <img src="https://i.pravatar.cc/100?u=mike" class="w-12 h-12 rounded-full ring-2 ring-white/30" alt="Mike R.">
-            <div>
-                <h4 class="font-bold">Michael Ross</h4>
-                <p class="text-xs text-white/70 font-medium uppercase tracking-widest">Casual Gamer</p>
+            <div class="group p-8 rounded-[2.5rem] bg-primary text-white shadow-xl shadow-orange-500/20 transition-all duration-500 hover:scale-105" data-aos="fade-left" data-aos-delay="200">
+                <div class="flex gap-1 mb-6">
+                    <i data-lucide="star" class="w-5 h-5 fill-white text-white"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-white text-white"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-white text-white"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-white text-white"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-white text-white"></i>
+                </div>
+                <p class="text-white/90 text-lg italic leading-relaxed mb-8 relative">
+                    <span class="text-6xl text-white/20 absolute -top-8 -left-4 font-serif">“</span>
+                    Perfect place to spend quality time with friends. The coffee is world-class and the vibe is unmatched in the city.
+                </p>
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/100?u=mike" class="w-12 h-12 rounded-full ring-2 ring-white/30" alt="Mike R.">
+                    <div>
+                        <h4 class="font-bold">Michael Ross</h4>
+                        <p class="text-xs text-white/70 font-medium uppercase tracking-widest">Casual Gamer</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-</div>
+        </div>
 
         <div class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-800 flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
-            <div class="flex items-center gap-2 font-black text-xl tracking-tighter"><i data-lucide="check-circle" class="text-primary"></i> Google 4.9/5</div>
-            <div class="flex items-center gap-2 font-black text-xl tracking-tighter"><i data-lucide="check-circle" class="text-primary"></i> Yelp Elite</div>
-            <div class="flex items-center gap-2 font-black text-xl tracking-tighter"><i data-lucide="check-circle" class="text-primary"></i> Trip Advisor</div>
+            <div class="flex items-center gap-2 font-black text-xl tracking-tighter dark:text-white"><i data-lucide="check-circle" class="text-primary"></i> Google 4.9/5</div>
+            <div class="flex items-center gap-2 font-black text-xl tracking-tighter dark:text-white"><i data-lucide="check-circle" class="text-primary"></i> Yelp Elite</div>
+            <div class="flex items-center gap-2 font-black text-xl tracking-tighter dark:text-white"><i data-lucide="check-circle" class="text-primary"></i> Trip Advisor</div>
         </div>
     </div>
 </section>
-<section id="cta-footer" class="py-24 px-6 bg-white dark:bg-slate-950">
+<section id="cta-footer" class="py-24 px-6 bg-white dark:bg-black">
     <div class="max-w-6xl mx-auto relative group">
         
         <div class="absolute -inset-1 bg-gradient-to-r from-primary to-orange-400 rounded-[3.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
         
-        <div class="relative bg-slate-900 dark:bg-slate-900 rounded-[3rem] p-12 md:p-20 overflow-hidden text-center">
+        <div class="relative bg-slate-900 dark:bg-black rounded-[3rem] p-12 md:p-20 overflow-hidden text-center border dark:border-slate-800">
             
             <div class="absolute top-10 left-10 opacity-10 -rotate-12 animate-bounce duration-[4000ms]">
                 <i data-lucide="dice-5" class="w-32 h-32 text-white"></i>
